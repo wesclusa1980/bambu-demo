@@ -2248,31 +2248,100 @@ body.loaded .overlay_effect:after{
     pointer-events: none;
 }
 /* Styles for the modal */
-/* Styles for the modal */
-.modal {
+
+.popup-hidden {
+    display: none;
+}
+
+.popup-visible {
+    display: block;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 100;
+}
+/* Add this to your stylesheet */
+#overlay {
     display: none;
     position: fixed;
-    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0,0,0,0.7);
+    z-index: 1000;  /* Lower z-index */
 }
 
-.modal-content {
-    background-color: #fff;
-    margin: 10% auto;
+#popup {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;  /* Higher z-index */
+}
+#popup.show-popup {
+    background-color: rgba(0,0,0,0.5); /* semi-transparent black */
+    z-index: 9999;  /* high z-index so it's on top */
+}
+.button-style {
+    text-decoration: none;
+	color: #fff;
+	background-color: #000;
+	display: inline-block;
+	padding: 13px 48px;
+	border: 2px solid #000;
+	font-family: "Poppins";
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.popup-hidden {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);  /* This gives the grey overlay effect */
+    z-index: 1000;  /* This ensures the popup is above other elements */
+    justify-content: center;
+    align-items: center;  /* These two properties center the .popup-content */
+}
+
+.popup-content {
+    max-width: 500px;  /* Or whatever max width you prefer */
     padding: 20px;
-    width: 60%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);  /* Optional: gives the modal box a bit of depth */
+}
+.button a {
+    display: inline-block; /* Makes it occupy space like a block but inline */
+    padding: 10px 20px; /* Adds some space inside the button */
+    background-color: #000000; /* Example color; adjust as needed */
+    color: white; /* Text color */
+    text-decoration: none; /* Removes underline */
+    border-radius: 4px; /* Makes the button's corners rounded */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
 
-.close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 24px;
-    cursor: pointer;
+.button a:hover {
+    background-color: #2980b9; /* Slightly darker shade for hover effect */
 }
+
+.button a:active {
+    background-color: #000000 /* Even darker for the active (pressed) state */
+}
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+  
 

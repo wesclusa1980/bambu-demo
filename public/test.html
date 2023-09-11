@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/plugins.css" />
+<link rel="stylesheet" type="text/css" href="css/colors.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>Popup Demo</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+</head>
+<body>
+    <button id="show-popup-btn">Show Popup</button>
+    <div id="popup" class="popup-hidden">
+        This is a Popup
+        <button id="popup-close-btn">Close</button>
+    </div>
+    <script>
+        $(document).ready(function() {
+            const popup = document.getElementById("popup");
+            const showPopupBtn = document.getElementById("show-popup-btn");
+            const closePopupBtn = document.getElementById("popup-close-btn");
+
+            if (showPopupBtn) {
+                showPopupBtn.addEventListener("click", function () {
+                    popup.className = "popup-visible";
+                });
+            }
+
+            if (closePopupBtn) {
+                closePopupBtn.addEventListener("click", function () {
+                    popup.className = "popup-hidden";
+                });
+            }
+        });
+    </script>
+</body>
+</html>
