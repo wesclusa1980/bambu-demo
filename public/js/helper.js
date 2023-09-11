@@ -130,7 +130,7 @@ function makeIssueWalletApiCall(accessToken, firstName, lastName, email) {
     console.log('Issuing Wallet with data:', issueWalletData);
     // Make the API call to issue-wallet
     $.ajax({
-        url: 'http://localhost:8080/' + issueWalletUrl,
+        url: issueWalletUrl,
         method: 'POST',
         headers: apiHeaders,
         data: JSON.stringify(issueWalletData),
@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function makeApiCallWithEmail(email) {
         console.log('Making API call with email:', email);
         var selectedAction = document.getElementById("actionType").value;
-        var apiUrl = 'http://localhost:8080/https://sandbox.api.bambumeta.software/brands/9/programs/265/issue-wallet?email=' + email;
+        var apiUrl = 'https://sandbox.api.bambumeta.software/brands/9/programs/265/issue-wallet?email=' + email;
         
         var apiHeaders = {
             "Authorization": "Bearer " + accessToken,
