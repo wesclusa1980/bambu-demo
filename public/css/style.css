@@ -2196,6 +2196,50 @@ body.loaded .overlay_effect:after{
     height: 50px;
     animation: spin 2s linear infinite;
 }
+/* Existing Styles */
+
+/* ... your existing styles ... */
+
+/* Tablet and smaller devices */
+@media only screen and (max-width: 768px) {
+
+    .shane_tm_hero .image {
+        background-size: 100%;
+    }
+
+    .shane_tm_hero .content h3 {
+        font-size: 48px; /* reduced font-size for h3 */
+    }
+
+    .shane_tm_hero .content .job {
+        font-size: 15px; /* slightly reduced font size for the job */
+        margin-bottom: 20px;
+    }
+
+    .shane_tm_hero .content {
+        padding-right: 10px; /* reduced padding */
+        width: 60%; /* increased width */
+    }
+}
+
+/* Mobile devices */
+@media only screen and (max-width: 480px) {
+
+    .shane_tm_hero .content h3 {
+        font-size: 36px; /* further reduced font-size for h3 */
+    }
+
+    .shane_tm_hero .content .job {
+        font-size: 13px; /* further reduced font size for the job */
+        margin-bottom: 15px;
+    }
+
+    .shane_tm_hero .content {
+        padding-right: 5px; /* further reduced padding */
+        width: 80%; /* further increased width */
+    }
+}
+
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
