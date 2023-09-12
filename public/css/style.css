@@ -466,6 +466,55 @@ h6 { font-size: 16px; }
 /*---------------------------------------------------*/
 /*	04) SHANE HERO
 /*---------------------------------------------------*/
+/* Mobile view adjustments */
+
+@media only screen and (max-width: 768px) {
+    .shane_tm_hero {
+        height: auto;
+    }
+    
+    .shane_tm_hero .background {
+        width: 100%;  /* Let the background take full width */
+    }
+    
+    .shane_tm_hero .image {
+        background-size: cover;
+        height: 200px;
+    }
+
+    .shane_tm_hero .content {
+        width: 100%;
+        padding: 20px 10px;
+        text-align: center;
+        position: relative;
+        top: auto;
+        transform: none;
+    }
+
+    .shane_tm_hero .content h3 {
+        font-size: 32px; /* Reduce the font size for mobile */
+    }
+
+    .shane_tm_hero .content h3 span {
+        -webkit-text-stroke: 0.5px #000; /* Reduce stroke for mobile */
+    }
+
+    .shane_tm_hero .content .job {
+        font-size: 16px; /* Adjust font size */
+    }
+
+    .shane_tm_down {
+        bottom: 20px; /* Adjust for mobile spacing */
+    }
+
+    .shane_tm_classic_hero .name_wrap h3 {
+        font-size: 32px;  /* Adjust for mobile size */
+    }
+    
+    .shane_tm_classic_hero .name_wrap span {
+        -webkit-text-stroke: 0.5px #000; /* Adjust stroke for mobile */
+    }
+}
 
 .shane_tm_hero{
 	width: 100%;
@@ -2195,61 +2244,6 @@ body.loaded .overlay_effect:after{
     width: 50px;
     height: 50px;
     animation: spin 2s linear infinite;
-}
-/* Existing Styles */
-
-/* ... your existing styles ... */
-
-/* Tablet and smaller devices */
-@media only screen and (max-width: 768px) {
-
-    .shane_tm_hero .image {
-        background-size: 100%;
-    }
-
-    .shane_tm_hero .content h3 {
-        font-size: 48px; /* reduced font-size for h3 */
-    }
-
-    .shane_tm_hero .content .job {
-        font-size: 15px; /* slightly reduced font size for the job */
-        margin-bottom: 20px;
-    }
-
-    .shane_tm_hero .content {
-        padding-right: 10px; /* reduced padding */
-        width: 60%; /* increased width */
-    }
-}
-
-/* Media Query for mobile */
-@media only screen and (max-width: 768px) {
-    .shane_tm_hero {
-        height: auto; /* To accommodate content without fixed height */
-    }
-    
-    .shane_tm_hero .image {
-        background-size: cover; /* Change to cover to ensure the image covers the area */
-        height: 200px; /* Adjust according to the desired height for mobile view */
-    }
-    
-    .shane_tm_hero .content {
-        width: 100%;
-        padding: 20px; /* Add some padding to make it breathable on small screens */
-        text-align: center; /* Center the text */
-    }
-    
-    .shane_tm_hero .content h3 {
-        font-size: 32px; /* Reduce the font size */
-    }
-    
-    .shane_tm_hero .content .job {
-        font-size: 16px; /* Adjust font size */
-    }
-    
-    .shane_tm_down {
-        display: none; /* Optionally hide this if not needed in mobile view */
-    }
 }
 
 
