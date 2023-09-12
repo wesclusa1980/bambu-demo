@@ -2222,21 +2222,33 @@ body.loaded .overlay_effect:after{
     }
 }
 
-/* Mobile devices */
-@media only screen and (max-width: 480px) {
-
-    .shane_tm_hero .content h3 {
-        font-size: 36px; /* further reduced font-size for h3 */
+/* Media Query for mobile */
+@media only screen and (max-width: 768px) {
+    .shane_tm_hero {
+        height: auto; /* To accommodate content without fixed height */
     }
-
-    .shane_tm_hero .content .job {
-        font-size: 13px; /* further reduced font size for the job */
-        margin-bottom: 15px;
+    
+    .shane_tm_hero .image {
+        background-size: cover; /* Change to cover to ensure the image covers the area */
+        height: 200px; /* Adjust according to the desired height for mobile view */
     }
-
+    
     .shane_tm_hero .content {
-        padding-right: 5px; /* further reduced padding */
-        width: 80%; /* further increased width */
+        width: 100%;
+        padding: 20px; /* Add some padding to make it breathable on small screens */
+        text-align: center; /* Center the text */
+    }
+    
+    .shane_tm_hero .content h3 {
+        font-size: 32px; /* Reduce the font size */
+    }
+    
+    .shane_tm_hero .content .job {
+        font-size: 16px; /* Adjust font size */
+    }
+    
+    .shane_tm_down {
+        display: none; /* Optionally hide this if not needed in mobile view */
     }
 }
 
