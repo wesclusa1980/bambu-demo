@@ -114,7 +114,8 @@
 
         // Make the API call to issue-wallet
         $.ajax({
-            url: 'http://localhost:8080/' + issueWalletUrl,
+            // url: 'http://localhost:8080/' + issueWalletUrl,
+            url: issueWalletUrl,
             method: 'POST',
             headers: apiHeaders,
             data: JSON.stringify(issueWalletData),
@@ -171,7 +172,8 @@
 
         // Make the API call as a PATCH request
         $.ajax({
-            url: 'http://localhost:8080/' + patchUrl,
+            //url: 'http://localhost:8080/' + patchUrl,
+            url:  patchUrl,
             method: 'PATCH',
             headers: apiHeaders,
             data: JSON.stringify(patchData),
