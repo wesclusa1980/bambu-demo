@@ -1,8 +1,15 @@
 // Function to send a message and initiate the process
 let accessToken;  // Store the token here once fetched
 var storedEmail = null;
+
+// Function to create a proxy URL
+function getProxyURL(targetURL) {
+    const baseURL = 'https://bambu-cors-9374b174ef1e.herokuapp.com/proxy?url=';
+    return baseURL + encodeURIComponent(targetURL);
+}
+
 // Function to obtain a token
-function obtainToken(callback) {
+export function obtainToken(callback) {
     var authUrl = 'https://sandbox-auth.bambumeta.software/oauth2/token';
     var tokenData = {
         grant_type: 'client_credentials'
@@ -18,86 +25,57 @@ function obtainToken(callback) {
         headers: tokenHeaders,
         data: tokenData,
         success: function(tokenResponse) {
-            accessToken = tokenResponse.access_token;
+            const accessToken = tokenResponse.access_token;
             console.log('Generated token:', accessToken);
-            if (typeof callback === 'function') callback();
+            if (typeof callback === 'function') callback(accessToken);
         },
         error: function(error) {
             console.log('Failed to obtain bearer token', error);
             // Hide the spinner
             document.querySelector('.spinner_container').style.display = 'none';
-            // You can show an error message to the user here
         }
     });
 }
 
-function sendMessage() {
+// Function to create a card
+function createCard() {
     // Retrieve form values
     var firstName = document.getElementById("first_name").value;
     var lastName = document.getElementById("last_name").value;
     var email = document.getElementById("email").value;
-    storedEmail = email;
-    //var favoriteColor = document.getElementById("favorite_color").value;
-    console.log('sendmessagefunction called'); 
-    
 
-    console.log('Form data:', { firstName, lastName, email});
-
-    // If accessToken is already available, use it
-    if (accessToken) {
-        makeIssueWalletApiCall(accessToken, firstName, lastName, email);
-        return;
-    }
-
-    // Create URL for the authentication API
-    var authUrl = 'https://sandbox-auth.bambumeta.software/oauth2/token';
-
-    // Request data for token generation
-    var tokenData = {
-        grant_type: 'client_credentials'
-    };
-
-    // Create headers for token generation
-    var tokenHeaders = {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: 'Basic ' + btoa('4mml4rs040gcmknikh8eg6170q' + ':' + '9381m4jhqji7eir2nmpg9fph0aj2bsu1j508mrc3e57aar99727')
-    };
-
-    // Display the spinner while API calls are in progress
-    var spinnerContainer = document.querySelector('.spinner_container');
-    spinnerContainer.style.display = 'block';
-
-    // Make the API call to obtain the bearer token
-    $.ajax({
-        url: authUrl,
-        method: 'POST',
-        headers: tokenHeaders,
-        data: tokenData,
-        success: function (tokenResponse) {
-            // Extract and store the bearer token in the global scope
-            accessToken = tokenResponse.access_token;
-            console.log('Generated token:', accessToken);
-
-            // Use the bearer token in the issue-wallet API call
-            makeIssueWalletApiCall(accessToken, firstName, lastName, email);
-        },
-        error: function (error) {
-            console.log('Failed to obtain bearer token', error);
-            // Hide the spinner
-            spinnerContainer.style.display = 'none';
-            // You can show an error message to the user here
-        }
+    // Assuming obtainToken function fetches and returns the token
+    obtainToken(function(accessToken) {
+        // Make an AJAX request to your server's endpoint
+        $.ajax({
+            url: '/makeIssueWalletApiCall',  // Your server endpoint
+            method: 'POST',
+            data: {
+                accessToken: accessToken,
+                firstName: firstName,
+                lastName: lastName,
+                email: email
+            },
+            success: function(response) {
+                // Handle the success response here (update the UI, etc.)
+                console.log('Successfully created card:', response);
+                //... remaining success code
+            },
+            error: function(error) {
+                console.log('Error:', error);
+                // Handle the error here
+            }
+        });
     });
-
-    return false; // To prevent default behavior, especially if the function is bound to an onclick of an anchor or form submit.
 }
 
 
 // Function to make the Issue Wallet API call
-function makeIssueWalletApiCall(accessToken, firstName, lastName, email) {
+export function makeIssueWalletApiCall(accessToken, firstName, lastName, email) {
+    // Rest of the code remains unchanged...
     // Construct the API endpoint URL
     showSpinner();
-    var issueWalletUrl = 'https://sandbox.api.bambumeta.software/brands/9/programs/265/issue-wallet';
+    var issueWalletEndpoint = 'https://sandbox.api.bambumeta.software/brands/9/programs/265/issue-wallet';
     
     // Create headers for the API call
     var apiHeaders = {
@@ -130,7 +108,7 @@ function makeIssueWalletApiCall(accessToken, firstName, lastName, email) {
     console.log('Issuing Wallet with data:', issueWalletData);
     // Make the API call to issue-wallet
     $.ajax({
-        url: issueWalletUrl,
+        url: getProxyURL(issueWalletEndpoint),
         method: 'POST',
         headers: apiHeaders,
         data: JSON.stringify(issueWalletData),
@@ -183,6 +161,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var popup = document.getElementById("popup");
 
     if (showPopupButton) {
+        console.log('Button was clicked');
         showPopupButton.addEventListener("click", function() {
             popup.style.display = 'flex';  // Show the popup
         });

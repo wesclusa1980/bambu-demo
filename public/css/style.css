@@ -2395,6 +2395,172 @@ body.loaded .overlay_effect:after{
     0% { transform: translate(-50%, -50%) rotate(0deg); }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
+/* Base styles */
+.flex-container {
+    display: flex;
+    justify-content: space-between; /* default */
+	position: relative;
+}
 
-  
+.left, .right {
+    flex: 1;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;  /* or any color you like */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.right {
+    position: relative; /* So that the overlay text is positioned based on this container */
+}
+
+/* For mobile screens, stack the form and the image */
+@media (max-width: 768px) {
+    .flex-container {
+        flex-direction: column;
+    }
+}
+/* Existing Styles */
+/* Container for the selector */
+
+
+.selector-container {
+    margin: 20px 0;
+    position: relative;
+}
+
+.selector-container label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+    font-weight: bold;
+}
+
+.selector-container select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    appearance: none; /* to remove the default arrow of select */
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+.selector-container select:hover {
+    border-color: #b3b3b3;
+}
+
+.selector-container select:focus {
+    border-color: #555;
+    outline: none;
+}
+
+/* Custom Arrow */
+.selector-container:after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; /* ensures that dropdown isn't blocked */
+    font-size: 16px;
+    color: #555;
+}
+
+
+
+
+.image-display {
+    position: relative;
+    width: 500px; /* This will be overridden for smaller screens below */
+    height: auto; /* Adjust to height auto for responsive behavior */
+}
+
+#selectedImage {
+    width: 100%;
+    max-width: 500px; /* To ensure the image doesn't stretch beyond its original size */
+    height: auto; /* To maintain aspect ratio */
+}
+
+.overlay-text {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.arrow {
+    cursor: pointer;    /* show clickable hand icon when hovering over the arrows */
+    user-select: none;  /* prevent the arrows from being selected when clicked */
+    padding: 10px;      /* space around the arrows */
+}
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .selector-button {
+        width: 45%; /* Roughly half the screen width minus margins */
+        display: block;
+        margin: 5px auto; /* Centering the block element */
+    }
+
+    .image-display {
+        width: 90%; /* Takes up most of the screen width */
+        margin: 0 auto; /* Centers the block */
+    }
+}
+.flex-container {
+    display: flex;           /* Use Flexbox */
+    justify-content: space-between; /* Spacing between the .left and .right */
+    align-items: flex-start; /* Align items to the top */
+}
+.contact_title {
+	margin: 0; /* or whatever margin you want */
+    padding: 0; /* or any other value you need */
+}
+.contact_title h4 {
+    margin: 0;
+}
+.selector-container {
+    display: flex;
+    align-items: center; /* vertically center the arrows with the button list */
+	font-family: 'Poppins', sans-serif;
+}
+
+.arrow {
+    cursor: pointer;    /* show clickable hand icon when hovering over the arrows */
+    user-select: none;  /* prevent the arrows from being selected when clicked */
+    padding: 10px;      /* space around the arrows */
+}
+
+.arrow-left {
+    margin-right: 10px; /* space between the left arrow and the button list */
+}
+
+.arrow-right {
+    margin-left: 10px;  /* space between the right arrow and the button list */
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-container {
+    margin-top: 20px; /* Adjust as needed */
+    margin-left: -150px; /* Move it leftwards. Adjust as needed. */
+}
+
 

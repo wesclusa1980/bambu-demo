@@ -5,7 +5,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 
 <head>
-
+<meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <meta name="description" content="Name of your web site">
@@ -24,6 +24,7 @@
 <!-- jQuery should be loaded before your helper.js -->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/handler.js"></script> <!-- defer ensures that the script runs after parsing -->
 <!-- If you actually need modernizr, include it. -->
 <script type="text/javascript" src="js/modernizr.custom.js"></script>
 </head>
@@ -67,6 +68,7 @@
 						<li class="current"><a href="#home">Home</a></li>
 					<li><a href="#contact">Start Here</a></li>
 					<li><a href="#portfolio">Use Cases</a></li>
+					<li><a href="#portfolio">Platform</a></li>
 						
 					</ul>
 				</div>
@@ -87,6 +89,7 @@
 					<li class="current"><a href="#home">Home</a></li>
 					<li><a href="#contact">Start Here</a></li>
 					<li><a href="#portfolio">Use Cases</a></li>
+					<li><a href="https://app.bambumeta.software">Platform</a></li>
 					
 				</ul>
 			</div>
@@ -152,8 +155,8 @@
                     <div class="portfolio_filter">
                         <ul>
                             <li><a href="#" class="current" data-filter="*">All</a></li>
-                            <li><a href="#" data-filter=".youtube">Marketing</a></li>
-                            <li><a href="#" data-filter=".vimeo">Messaging</a></li>
+                            <li><a href="#" data-filter=".marketing">Marketing</a></li>
+                            <li><a href="#" data-filter=".messaging">Messaging</a></li>
                             <li><a href="#" data-filter=".vimeo">Order Notifications</a></li>
                             <li><a href="#" data-filter=".popup">Digital Receipt</a></li>
                             <li><a href="#" data-filter=".detail">Location Aware</a></li>
@@ -164,11 +167,11 @@
             <div class="shane_tm_portfolio_titles"></div>
             <div class="portfolio_list wow fadeInLeft" data-wow-duration="1.5s">
                 <ul class="gallery_zoom">
-                    <li class="youtube">
+                    <li class="marketing">
                         <div class="inner">
                             <div class="entry shane_tm_portfolio_animation_wrap" data-title="Loyalty Card" data-category="Marketing" id="loyaltyCardDiv">
                                 <!-- Image to click to show the popup -->
-                                <a href="javascript:void(0);" id="show-popup-btn">
+                                <a href="javascript:void(0);" id="show-popup-btn" onclick="showMarketingPopup()">
                                     <img src="https://loopyloyalty.com/img/loopy-loyalty-digital-stamp-card-solution-apple-wallet-google-pay@2x.png" alt="Show Popup" />
                                     <div class="main" data-img-url="https://loopyloyalty.com/img/loopy-loyalty-digital-stamp-card-solution-apple-wallet-google-pay@2x.png"></div>
                                 </a>
@@ -182,7 +185,7 @@
 								<div id="popup" class="popup-hidden">
 									<div class="popup-content">
 									<div class="popup-content" style="background-color: white;">
-										<span class="popup-close-btn" id="popup-close-btn">&times;</span>
+										<span class="popup-close-btn" id="popup-close-btn" onclick="hideMyPopup()">&times;</span>
 										<h2>Use Cases</h2>
 										<!-- ... -->
 										<form id="popup-form">
@@ -194,7 +197,64 @@
 												</select>
 											</div>
 											<div class="button wow fadeInUp" data-wow-duration="1.5s">
-												<a href="#" id="usecase-button" role="button">Update your card</a>
+												<a href="#" id="marketing-usecase" role="button" onclick="handleMarketingUseCase()">Update your card</a>
+											</div>
+										</form>
+										
+										
+										
+									<!-- ... -->
+								</div>
+								<div id="messageModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background-color:rgba(0,0,0,0.5); z-index:9999;">
+									<div style="max-width: 300px; margin: 100px auto; padding: 20px; background-color: #fff; text-align: center;">
+										<p>Check your card</p>
+										<button id="modalOkButton">OK</button>
+									</div>
+								</div>
+								<div id="spinnerModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background-color:rgba(0,0,0,0.5); z-index:10000;">
+									<div class="loader" style="border: 16px solid #f3f3f3; border-top: 16px solid #3498db; border-radius: 50%; width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: spin 1s linear infinite;"></div>
+								</div>
+									</div>
+								</div>
+                                <!-- Mobile title -->
+                                <div class="mobile_title">
+                                    <h3>Loyalty Card</h3>
+                                    <span>Marketing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+					<li class="messaging">
+                        <div class="inner">
+                            <div class="entry shane_tm_portfolio_animation_wrap" data-title="Loyalty Card" data-category="Marketing" id="loyaltyCardDiv">
+                                <!-- Image to click to show the popup -->
+                                <a href="javascript:void(0);" id="show-popup-btn" onclick="showMarketingPopup()">
+                                    <img src="https://loopyloyalty.com/img/loopy-loyalty-digital-stamp-card-solution-apple-wallet-google-pay@2x.png" alt="Show Popup" />
+                                    <div class="main" data-img-url="https://loopyloyalty.com/img/loopy-loyalty-digital-stamp-card-solution-apple-wallet-google-pay@2x.png"></div>
+                                </a>
+								<div class="shane_tm_title">
+									<div class="title_flex">
+								<div class="left">
+									<span>Messaging</span>
+								</div>
+								</div>
+								</div>
+								<div id="popup" class="popup-hidden">
+									<div class="popup-content">
+									<div class="popup-content" style="background-color: white;">
+										<span class="popup-close-btn" id="popup-close-btn" onclick="hideMyPopup()">&times;</span>
+										<h2>Use Cases</h2>
+										<!-- ... -->
+										<form id="popup-form">
+											<div style="display: flex; flex-direction: column; background-color: white; padding: 20px;">
+												<label for="actionType">Choose an action:</label>
+												<select id="actionType" name="actionType">
+													<option value="awardPoints">Award Points</option>
+													<option value="punchCard">Punch Card</option>
+												</select>
+											</div>
+											<div class="button wow fadeInUp" data-wow-duration="1.5s">
+												<a href="#" id="marketing-usecase" role="button" onclick="handleMarketingUseCase()">Update your card</a>
 											</div>
 										</form>
 										
@@ -287,54 +347,143 @@
     <p>Creating card...</p>
 </div>
 
+
 <!-- MODAL CONTACT -->
-<div class="shane_tm_contact_popup">
-    <div class="popup_description_wrap">
-        <div class="contact_title">
-            <h3>Tell us about yourself</h3>
-        </div>
-        <div class="wrapper">
-            <div class="left">
-                <div class="fields">
-                    <form id="contact_form" autocomplete="off">
-                        <div class="returnmessage" data-success="Your message has been received, We will contact you soon."></div>
-                        <div class="empty_notice"><span>Please Fill Required Fields</span></div>
-                        <div class="first">
-                            <ul>
-                                <li>
-                                    <input id="first_name" name="first_name" type="text" placeholder="First Name">
-                                </li>
-                                <li>
-                                    <input id="last_name" name="last_name" type="text" placeholder="Last Name">
-                                </li>
-                                <li>
-                                    <input id="email" name="email" type="text" placeholder="Email">
-                                </li>
-                            <!-- <li>
-									<div class="shane_tm_select">
-										<select id="favorite_color" name="favorite_color">
-											<option value="" disabled selected>Select your favorite color</option>
-											<option value="Red">Red</option>
-											<option value="Blue">Blue</option>
-											<option value="Green">Green</option>
-											<option value="Yellow">Yellow</option>
-											<option value="Purple">Purple</option>
-										</select>
-									</div>
-								</li> -->
-								
-                            </ul>
+<div class="shane_tm_section" id="portfolio">
+    <div class="shane_tm_contact_popup">
+        <div class="popup_description_wrap">
+            
+            <div class="wrapper">
+                
+                <div class="flex-container">
+                    <!-- Form on the Left -->
+                    <div class="left">
+                        <div class="contact_title">
+						
+                            <h4>1. Tell us about yourself</h4>
                         </div>
-                        <div class="shane_tm_button" data-position="left">
-                            <a id="send_message" href="#" onclick="sendMessage();">Create card</a>							
+                        <div class="fields">
+                            <form id="contact_form" autocomplete="off">
+                                <div class="returnmessage" data-success="Your message has been received, We will contact you soon."></div>
+                                <div class="empty_notice"><span>Please Fill Required Fields</span></div>
+                                <div class="first">
+                                    <ul>
+                                        <li>
+                                            <input id="first_name" name="first_name" type="text" placeholder="First Name" onkeyup="updateOverlayText(this.value); checkFormAndSelector();">
+                                        </li>
+                                        <li>
+                                            <input id="last_name" name="last_name" type="text" placeholder="Last Name" onkeyup="updateOverlayText(); checkFormAndSelector();">
+                                        </li>
+                                        <li>
+                                            <input id="email" name="email" type="text" placeholder="Email" onkeyup="checkFormAndSelector();">
+                                        </li>
+										<li>
+											<!-- Usecase Title -->
+											<label for="cardSelector">Choose your industry:</label>
+											<div class="selector-container">
+												
+							<select id="cardSelector" onchange="updateImage(this.value);">
+								<option value="marketing">Retail</option>
+								<option value="messaging">CPG</option>
+								<option value="order">Insurance</option>
+								<option value="receipt">Sports</option>
+								<option value="location">Hospitality</option>
+							</select>
+						</div>
+										</li>
+                                    </ul>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
+                    
+                    <!-- Image on the Right -->
+                    <div class="right">
+                        <div class="contact_title">
+                            <h4>2. Choose your industry</h4>
+                        </div>
+                        
+                        <div class="modal-image">
+                            <img src="img/demo_card.png" alt="Descriptive alt text" id="selectedImage">
+                            <div class="new_overlay-text" id="overlayText"></div>
+                        </div>
+                        
+                        
+						<div class="button-container">
+							<div class="contact_title">
+								<h4>3. Get your card</h4>
+							</div>
+						<div class="shane_tm_button" data-position="left">
+							<a id="send_message" href="#" onclick="initiateCreateCardProcess();" disabled>Create card</a>							
+						</div>
+						</div>
+                    </div>
                 </div>
+				
             </div>
         </div>
     </div>
 </div>
 <!-- MODAL CONTACT -->
+
+
+<!-- ... (your modal code remains unchanged) ... -->
+
+<style>
+    .popup_description_wrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    /* Container */
+.modal-image {
+    position: relative;   /* set relative positioning on container */
+    display: inline-block; /* keeps the width of the container as wide as the image */
+}
+
+/* Image */
+.modal-image img {
+    display: block;   /* removes any extra space around the image */
+    max-width: 100%;  /* optional, ensures image doesn't overflow container */
+}
+
+/* Overlay text */
+.new_overlay-text {
+	top: 50%;
+    position: absolute;   /* absolutely position the text within the container */
+    bottom: 10px;         /* position the text 10px from the bottom of the container */
+    left: 45px;           /* position the text 10px from the left of the container */
+   
+    color: black;         /* white text */
+    padding: 5px 10px;    /* padding around the text */
+    border-radius: 3px;
+	font-size: 10px;   /* optional, rounded corners for the overlay background */
+}
+
+
+    .left {
+        flex: 1;
+        margin-right: 20px;  /* Add space to the right of the form */
+    }
+
+    /* Mobile View */
+    @media (max-width: 768px) {
+        .popup_description_wrap {
+            flex-direction: column;
+        }
+
+        .modal-image, .left {
+            width: 100%;
+        }
+
+        .left {
+            margin-right: 0; /* Reset the margin for mobile */
+        }
+    }
+</style>
+
+
 
 	
 	<!-- CURSOR -->
@@ -354,10 +503,20 @@
   
 <!-- SCRIPTS -->
 <!--[if lt IE 10]> <script type="text/javascript" src="js/ie8.js"></script> <![endif]-->	
-<script src="js/plugins.js"></script>
+<script src="js/plugins.js"></script> 
 <script src="js/init.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5bpEs3xlB8vhxNFErwoo3MXR64uavf6Y&callback=initMap"></script>
-<script src="js/helper.js" defer></script> <!-- defer ensures that the script runs after parsing -->
+<script>
+	// Your JavaScript here
+	const buttons = document.querySelectorAll('.selector-button');
+	const selectedImage = document.getElementById('selectedImage');
+
+	buttons.forEach(button => {
+		button.addEventListener('click', function() {
+			const imageUrl = this.getAttribute('data-image');
+			selectedImage.src = imageUrl;
+		});
+	});
+</script>
 <!-- /SCRIPTS -->
 <!-- Other HTML content above -->
 
