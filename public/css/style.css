@@ -2448,6 +2448,15 @@ body.loaded .overlay_effect:after{
 }
 /* Existing Styles */
 /* Container for the selector */
+/* ===== Custom Modifications ===== */
+
+.shane_tm_contact_popup .fields li {
+    margin: 0;  /* Reset margin */
+    padding: 0; /* Reset padding */
+}
+
+/* other custom styles... */
+
 .shane_tm_contact_popup .left .fields .first .selector-container label {
     display: block;
 }
@@ -2592,6 +2601,14 @@ body.loaded .overlay_effect:after{
     .button-container {
         margin-left: 0;  /* Reset any left margin for mobile */
     }
+}
+.shane_tm_contact_popup input,
+.shane_tm_contact_popup select {
+    color: #000; /* Example color; adjust as needed */
+}
+
+.shane_tm_contact_popup select option {
+    color: #000; /* Example color; adjust for dropdown options */
 }
 
 
