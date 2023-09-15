@@ -391,4 +391,24 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+let currentStep = 1;
+
+function showStep(step) {
+    document.querySelectorAll('.step').forEach(el => el.style.display = 'none');
+    document.getElementById('step' + step).style.display = 'block';
+}
+
+function nextStep() {
+    if (currentStep < 3) {
+        currentStep++;
+        showStep(currentStep);
+    }
+}
+
+function prevStep() {
+    if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+    }
+}
 
