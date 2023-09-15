@@ -1867,7 +1867,64 @@ body.loaded .overlay_effect:after{
 	.shane_tm_news .news_list ul{margin: 0px;}
 	.shane_tm_news .news_list ul li{padding: 0px;width: 100%;}
 }
+/*---------------------------------------------------*/
+/*	OVERRIDES
+/*---------------------------------------------------*/
+.selector-container {
+    margin: 20px 0;
+    position: relative;
+	font-family: 'Poppins', sans-serif; /* Add this line */
+}
+
+.selector-container label {
+    display: block !important;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+	font-family: 'Poppins', sans-serif; /* Add this line */
+}
+
+.selector-container select {
+    width: 100%;
+    padding: 10px;
+    font-size: 13px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    appearance: none; /* to remove the default arrow of select */
+    background-color: #ffffff;
+    transition: border-color 0.3s ease;
+	font-family: 'Poppins', sans-serif !important;
+}
+
+.selector-container select:hover {
+    border-color: #b3b3b3;
+}
+
+.selector-container select:focus {
+    border-color: #555;
+    outline: none;
+}
+/* Custom Arrow */
+.selector-container:after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; /* ensures that dropdown isn't blocked */
+    font-size: 16px;
+    color: #555;
+}
 /* Reset/Global Styles */
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;  /* or any color you like */
+    font-size: 20px;
+    font-weight: bold;
+}
 body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
     margin: 0;
     padding: 0;
