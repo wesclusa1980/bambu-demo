@@ -27,6 +27,16 @@
 <script src="js/handler.js"></script> <!-- defer ensures that the script runs after parsing -->
 <!-- If you actually need modernizr, include it. -->
 <script type="text/javascript" src="js/modernizr.custom.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-252875669-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-252875669-1');
+</script>
+
 </head>
 
 <body> 
@@ -211,9 +221,7 @@
 										<button id="modalOkButton">OK</button>
 									</div>
 								</div>
-								<div id="spinnerModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background-color:rgba(0,0,0,0.5); z-index:10000;">
-									<div class="loader" style="border: 16px solid #f3f3f3; border-top: 16px solid #3498db; border-radius: 50%; width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: spin 1s linear infinite;"></div>
-								</div>
+								
 									</div>
 								</div>
                                 <!-- Mobile title -->
@@ -229,8 +237,8 @@
                             <div class="entry shane_tm_portfolio_animation_wrap" data-title="Loyalty Card" data-category="Marketing" id="loyaltyCardDiv">
                                 <!-- Image to click to show the popup -->
                                 <a href="javascript:void(0);" id="show-popup-btn" onclick="showMarketingPopup()">
-                                    <img src="https://loopyloyalty.com/img/loopy-loyalty-digital-stamp-card-solution-apple-wallet-google-pay@2x.png" alt="Show Popup" />
-                                    <div class="main" data-img-url="https://loopyloyalty.com/img/loopy-loyalty-digital-stamp-card-solution-apple-wallet-google-pay@2x.png"></div>
+                                    <img src="https://images.ctfassets.net/3prze68gbwl1/1nInWJhO7SqRg6Dl4x5ZlO/536967e26e8705b13e87eeb77840a660/pushNotifications.png?w=700&h=550&fit=pad" alt="Show Popup" />
+                                    <div class="main" data-img-url="https://images.ctfassets.net/3prze68gbwl1/1nInWJhO7SqRg6Dl4x5ZlO/536967e26e8705b13e87eeb77840a660/pushNotifications.png?w=700&h=550&fit=pad"></div>
                                 </a>
 								<div class="shane_tm_title">
 									<div class="title_flex">
@@ -285,6 +293,9 @@
             </div>
         </div>
     </div>
+</div>
+<div id="spinnerModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background-color:rgba(0,0,0,0.5); z-index:10000;">
+	<div class="spinner" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
 </div>
 <!-- /PORTFOLIO -->
 
@@ -378,11 +389,15 @@
                                             <input id="email" name="email" type="text" placeholder="Email" onkeyup="checkFormAndSelector();">
                                         </li>
 										<li>
+                                            <input id="company" name="company" type="text" placeholder="company">
+                                        </li>
+										<li>
 											<!-- Usecase Title -->
-											<label for="cardSelector">Choose your industry:</label>
-											<div class="selector-container">
-												
+											
+							<div class="selector-container">
+											
 							<select id="cardSelector" onchange="updateImage(this.value);">
+								<option value="none">Choose your industry</option>
 								<option value="marketing">Retail</option>
 								<option value="messaging">CPG</option>
 								<option value="order">Insurance</option>
@@ -400,9 +415,9 @@
                     <!-- Image on the Right -->
                     <div class="right">
                         <div class="contact_title">
-                            <h4>2. Choose your industry</h4>
+                            <h4>2. Preview your card</h4>
                         </div>
-                        
+                       
                         <div class="modal-image">
                             <img src="img/demo_card.png" alt="Descriptive alt text" id="selectedImage">
                             <div class="new_overlay-text" id="overlayText"></div>

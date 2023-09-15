@@ -1,6 +1,8 @@
 // Function to send a message and initiate the process
 let accessToken;  // Store the token here once fetched
-
+let firstNameFromForm = document.getElementById("first_name").value;
+let lastNameFromForm = document.getElementById("last_name").value;
+let emailFromForm = document.getElementById("email").value;
 
 // Function to create a proxy URL
 function getProxyURL(targetURL) {
@@ -38,6 +40,8 @@ function obtainToken(callback) {
 
 // Function to make the Issue Wallet API call
 function makeIssueWalletApiCall(accessToken, firstName, lastName, email) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const sellerValue = urlParams.get('seller') || "defaultSeller"; // defaultSeller is a fallback if the parameter is not found. Adjust as needed.
     // Rest of the code remains unchanged...
     // Construct the API endpoint URL
     //showSpinner();
@@ -55,7 +59,7 @@ function makeIssueWalletApiCall(accessToken, firstName, lastName, email) {
         templateId: 180,
         passdata: {
             metaData: {
-                seller: "Hatton"
+                seller: sellerValue
             }
         },
         person: {
@@ -122,6 +126,7 @@ function makeIssueWalletApiCall(accessToken, firstName, lastName, email) {
 }
 function initiateCreateCardProcess() {
     // First, fetch the token.
+    showSpinner();
     obtainToken(function(accessToken) {
         if (accessToken) {
             // Now, retrieve form values.
@@ -129,11 +134,52 @@ function initiateCreateCardProcess() {
             const lastName = document.getElementById("last_name").value;
             const email = document.getElementById("email").value;
             //email = document.getElementById("email").value; // Assign the email to the global variable
+             // Add to HubSpot
+             addRecordToHubSpot(firstName, lastName, email);
             // Call the makeIssueWalletApiCall to create the wallet card.
             makeIssueWalletApiCall(accessToken, firstName, lastName, email);
         } else {
             console.log('Failed to fetch the access token.');
         }
+    });
+}
+function addRecordToHubSpot(firstName, lastName, email, phone, company, website) {
+    const hubSpotURL = "https://api.hubapi.com/crm/v3/objects/contacts/batch/create";
+    const bearerToken = "pat-na1-7f6cdc57-a7d9-427c-bd08-a2af4f399b59";  // Replace with your actual token.
+
+    const data = {
+        inputs: [
+            {
+                properties: {
+                    email: email,
+                    phone: phone,
+                    company: company,
+                    website: website,
+                    lastname: lastName,
+                    firstname: firstName
+                    
+                },
+                associations: []
+            }
+        ]
+    };
+
+    // Fetch using the proxy URL
+    fetch(getProxyURL(hubSpotURL), {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${bearerToken}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Success:", data);
+    })
+    .catch((error) => {
+        console.error("Error:", error);
     });
 }
 function showMessageModal() {
@@ -150,6 +196,7 @@ var modalOkButton = document.getElementById("modalOkButton");
 modalOkButton.addEventListener("click", closeModal);
 function showSpinner() {
     var spinner = document.getElementById("spinnerModal");
+    console.log(spinner); // Log the value here
     spinner.style.display = "block";
 }
 function hideSpinner() {

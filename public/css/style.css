@@ -883,7 +883,7 @@ body.loaded .overlay_effect:after{
 	color: #fff;
 	background-color: #000;
 	display: inline-block;
-	padding: 13px 48px;
+	padding: 10px 20px;
 	border: 2px solid #000;
 	font-family: "Poppins";
 	
@@ -892,6 +892,21 @@ body.loaded .overlay_effect:after{
 	    -ms-transition: all .3s ease;
 	     -o-transition: all .3s ease;
 	        transition: all .3s ease;
+}
+/* Mobile responsive adjustments */
+@media only screen and (max-width: 768px) { /* This width is an example, adjust based on your design's needs */
+    
+    .button-container {
+        width: 100%; /* Full width */
+        text-align: center; /* Center-align content */
+    }
+    
+    .shane_tm_button a {
+        display: inline-block; /* Allows for centering */
+        width: 100%; /* Full width minus some padding */
+        max-width: 260px; /* Prevents the button from being too wide on large mobile screens */
+        box-sizing: border-box;
+    }
 }
 .shane_tm_button a:hover{
 	color: #000;
@@ -2262,6 +2277,7 @@ body.loaded .overlay_effect:after{
 }
 
 .shane_tm_select select {
+	font-family: 'Poppins', sans-serif; /* Add this line */
     appearance: none;
     background-color: transparent;
     border: none;
@@ -2432,30 +2448,35 @@ body.loaded .overlay_effect:after{
 }
 /* Existing Styles */
 /* Container for the selector */
+.shane_tm_contact_popup .left .fields .first .selector-container label {
+    display: block;
+}
 
 
 .selector-container {
     margin: 20px 0;
     position: relative;
+	font-family: 'Poppins', sans-serif; /* Add this line */
 }
 
 .selector-container label {
-    display: block;
+    display: block !important;
     font-size: 16px;
     margin-bottom: 10px;
     color: #555;
-    font-weight: bold;
+	font-family: 'Poppins', sans-serif; /* Add this line */
 }
 
 .selector-container select {
     width: 100%;
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
+    font-size: 13px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     appearance: none; /* to remove the default arrow of select */
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     transition: border-color 0.3s ease;
+	font-family: 'Poppins', sans-serif !important;
 }
 
 .selector-container select:hover {
@@ -2558,9 +2579,20 @@ body.loaded .overlay_effect:after{
     align-items: center;
 }
 
+/* Default desktop styles */
 .button-container {
-    margin-top: 20px; /* Adjust as needed */
-    margin-left: -150px; /* Move it leftwards. Adjust as needed. */
+    margin-top: 20px;
+    text-align: center;  /* Center align the button for desktops */
+    /* If you want a specific margin-left for desktops other than -150px, 
+       you can adjust it here, but I'm removing it for clarity. */
 }
+
+/* Mobile responsive adjustments */
+@media only screen and (max-width: 768px) {
+    .button-container {
+        margin-left: 0;  /* Reset any left margin for mobile */
+    }
+}
+
 
 
