@@ -1,8 +1,8 @@
 // Function to send a message and initiate the process
+console.log("Script is running");
 let accessToken;  // Store the token here once fetched
-let firstNameFromForm = document.getElementById("first_name").value;
-let lastNameFromForm = document.getElementById("last_name").value;
-let emailFromForm = document.getElementById("email").value;
+
+
 
 // Function to create a proxy URL
 function getProxyURL(targetURL) {
@@ -39,91 +39,7 @@ function obtainToken(callback) {
 }
 
 // Function to make the Issue Wallet API call
-function makeIssueWalletApiCall(accessToken, firstName, lastName, email) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const sellerValue = urlParams.get('seller') || "defaultSeller"; // defaultSeller is a fallback if the parameter is not found. Adjust as needed.
-    // Rest of the code remains unchanged...
-    // Construct the API endpoint URL
-    //showSpinner();
-    var issueWalletEndpoint = 'https://sandbox.api.bambumeta.software/brands/9/programs/265/issue-wallet';
-    
-    // Create headers for the API call
-    var apiHeaders = {
-        Authorization: 'Bearer ' + accessToken
-    };
 
-    // Create data for the issue-wallet API call
-    var issueWalletData = {
-        brandId: 9,
-        programId: 265,
-        templateId: 180,
-        passdata: {
-            metaData: {
-                seller: sellerValue
-            }
-        },
-        person: {
-            email: email
-        }
-    };
-
-    // Add firstName and lastName to the data only if they are provided
-    if (firstName) {
-        issueWalletData.person.firstName = firstName;
-    }
-    if (lastName) {
-        issueWalletData.person.lastName = lastName;
-    }
-
-    console.log('Issuing Wallet with data:', issueWalletData);
-    // Make the API call to issue-wallet
-    $.ajax({
-        url: getProxyURL(issueWalletEndpoint),
-        method: 'POST',
-        headers: apiHeaders,
-        data: JSON.stringify(issueWalletData),
-        contentType: 'application/json',
-        success: function(issueWalletResponse) {
-            console.log('Successfully created card', issueWalletResponse);
-        
-            // Store the required values in sessionStorage
-            if (issueWalletResponse.passId && issueWalletResponse.personId) {
-                sessionStorage.setItem("passId", issueWalletResponse.passId);
-                sessionStorage.setItem("personId", issueWalletResponse.personId);
-                sessionStorage.setItem("email", email);
-
-            }
-            var storedPassId = sessionStorage.getItem("passId");
-            var storedPersonId = sessionStorage.getItem("personId");
-            console.log("Stored passId:", storedPassId);
-            console.log("Stored personId:", storedPersonId);
-            hideSpinner();
-            showMessageModal();
-            // Hide the spinner
-            
-        
-            // Show a success message to the user
-            var modalContent = document.querySelector('.popup_description_wrap');
-            modalContent.innerHTML = '<div class="success_message"><p>Card created successfully! Click the button below to download your pass.</p><div class="shane_tm_button" data-position="left"><a id="download_button" class="shane_tm_button_dark" href="' + 'https://wallet-pass-sandbox.bambumeta.software' + issueWalletResponse.downloadUrl + '" target="_blank">Download Pass</a></div></div>';
-        
-            // Apply styles to the success message
-            var successMessage = modalContent.querySelector('.success_message');
-            successMessage.style.textAlign = 'center';
-            successMessage.style.padding = '20px';
-           
-            
-
-        },
-        error: function(error) {
-            console.log('Failed to create card', error);
-
-            // Hide the spinner
-            var spinnerContainer = document.querySelector('.spinner_container');
-            spinnerContainer.style.display = 'none';
-            // You can show an error message to the user here
-        }
-    });
-}
 function initiateCreateCardProcess() {
     // First, fetch the token.
     showSpinner();
@@ -193,7 +109,7 @@ function closeModal() {
     document.getElementById("popup").style.display = "none";
 }
 var modalOkButton = document.getElementById("modalOkButton");
-modalOkButton.addEventListener("click", closeModal);
+//modalOkButton.addEventListener("click", closeModal);
 function showSpinner() {
     var spinner = document.getElementById("spinnerModal");
     console.log(spinner); // Log the value here
@@ -265,10 +181,10 @@ function handleMarketingUseCase() {
         makeIssueWalletApiCall(accessToken, null, null, email, requestBody);
     }
 }
-function showMarketingPopup() {
-    var popup = document.getElementById("popup");
-    popup.style.display = 'flex';
-}
+//function showReservationPopup() {
+  //  var popup = document.getElementById("popup");
+   //// popup.style.display = 'flex';
+//}
 function hideMyPopup() {
     document.getElementById("popup").style.display = 'none';
 }
@@ -339,76 +255,90 @@ function checkFormAndSelector() {
     }
 }
 
-// Add an event listener for the button click:
 
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("DOMContentLoaded fired");
+(function() {
+    //let currentStep = 1;
 
-    // Define these variables inside the listener
-    console.log("show-popup-btn");
-    var showPopupButton = document.getElementById("show-popup-btn");
-    console.log("close-btn");
-    var closePopupButton = document.getElementById("popup-close-btn");
-    console.log("popup");
-    var popup = document.getElementById("popup");
-
-    if (showPopupButton) {
-        console.log('Attempting to show popup...');
-        showPopupButton.addEventListener("click", function() {
-            console.log('Clicked show popup button');
-            popup.style.display = 'flex';  // Show the popup
-        });
+    window.showStep = function(step) {
+        const steps = document.querySelectorAll('.wizard .step');
+        for (let s of steps) {
+            s.style.display = 'none';  // Hide all steps
+        }
+        document.querySelector('#step' + step).style.display = 'block'; // Show the desired step
     }
 
-    if (closePopupButton) {
-        closePopupButton.addEventListener("click", function() {
-            popup.style.display = 'none';  // Hide the popup
-        });
+    window.nextStep = function() {
+        if (currentStep < 3) { // Assuming you have 3 steps
+            currentStep++;
+            showStep(currentStep);
+        }
     }
 
-    // Optional: Close the popup when the grey background is clicked
-    if (popup) {
-        popup.addEventListener("click", function(event) {
-            if (event.target === popup) {  // Check if the background was clicked, not a child element
-                popup.style.display = 'none';  // Hide the popup
-            }
-        });
+    window.prevStep = function() {
+        if (currentStep > 1) {
+            currentStep--;
+            showStep(currentStep);
+        }
     }
 
-    const createCardButton = document.getElementById("send_message");
-    if(createCardButton) {
-        createCardButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            initiateCreateCardProcess();
-        });
-    }
+    document.addEventListener('DOMContentLoaded', (event) => {
+        showStep(1);  // Initialize the first step when the document loads
+    });
 
-    const marketingUsecaseButton = document.getElementById("marketing-usecase");
-    if (marketingUsecaseButton) {
-        marketingUsecaseButton.addEventListener("click", function(event) {
-            event.preventDefault();
-            handleMarketingUseCase();
-        });
-    }
-});
-let currentStep = 1;
+})(); // End of IIFE
+var currentStep = 1;
+//let currentStep = 1; // Start at the first step by default
 
 function showStep(step) {
-    document.querySelectorAll('.step').forEach(el => el.style.display = 'none');
-    document.getElementById('step' + step).style.display = 'block';
+    // Grab all steps
+    console.log("Attempting to show step: ", step);
+    const steps = document.querySelectorAll('.wizard .step');
+    
+    // Hide all of them
+    for (let s of steps) {
+        s.style.display = 'none';  
+    }
+    
+    // Show the specified step
+    document.querySelector('#step' + step).style.display = 'block'; 
 }
 
 function nextStep() {
-    if (currentStep < 3) {
+    console.log("nextStep called. Current step:", currentStep);
+    // Check if we can progress to the next step
+    if (currentStep < 3) { 
         currentStep++;
+        console.log("Incrementing step to: ", currentStep);
         showStep(currentStep);
+    } else {
+        console.log("Cannot increment step further.");
     }
 }
 
+
 function prevStep() {
+    // Check if we can go back a step
     if (currentStep > 1) {
         currentStep--;
         showStep(currentStep);
     }
 }
+
+//function openModal() {
+    //document.getElementById('myModal').style.display = 'block';
+//}
+
+//function closeModal() {
+   // document.getElementById('myModal').style.display = 'none';
+//}
+// Add an event listener for the button click:
+document.addEventListener('DOMContentLoaded', (event) => {
+   showStep(1);  // Initialize the first step when the document loads
+});
+//let currentStep = 1;
+
+
+
+
+
 

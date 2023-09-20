@@ -976,8 +976,8 @@ body.loaded .overlay_effect:after{
 	left: 0px;
 	right: 0px;
 	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: contain;
+	background-size:  cover;  
+	background-position: center;
     clip-path: inset(0 0 0 0);
 	
 	-webkit-transition: all .3s ease-in-out;
@@ -1933,8 +1933,8 @@ body.loaded .overlay_effect:after{
 /* Reset/Global Styles */
 .overlay-text {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 60%;
+    left: 100%;
     transform: translate(-50%, -50%);
     color: #fff;  /* or any color you like */
     font-size: 20px;
@@ -2018,9 +2018,202 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 
 .wizard-controls {
     display: flex;
-    justify-content: space-between;
-    padding-top: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Space between the buttons */
 }
+
+.custom-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    overflow: auto;
+    z-index: 1000;
+}
+
+.custom-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    position: relative;
+}
+
+.custom-close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    cursor: pointer;
+}
+
+.custom-close:hover, .custom-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Default styles for larger screens */
+.custom-modal-content {
+    width: 500px;
+    height: 400px;
+    overflow: auto;
+}
+
+.step {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsive styles for smaller screens (e.g., mobile devices with a max width of 600px) */
+@media only screen and (max-width: 600px) {
+    .custom-modal-content {
+        width: 90%; /* Take up 90% of the screen width */
+        height: 90vh; /* Take up 90% of the screen height */
+    }
+}
+/* Default styles for larger screens */
+.portfolio_list li {
+    width: 250px;
+    height: 300px;
+}
+
+/* Responsive styles for screens smaller than 600px */
+@media (max-width: 600px) {
+    .portfolio_list li {
+        width: 100%;  /* take the full width of the container */
+        height: auto; /* adjust height based on content */
+    }
+}
+.gallery_zoom {
+    display: flex;
+    flex-wrap: wrap; /* allows items to wrap to the next line */
+    justify-content: space-between; /* space items evenly */
+}
+.responsive-img {
+    width: 50%;     /* Adjust width */
+    max-width: 50%; /* Ensuring it doesn't stretch wider than its original width */
+    height: auto;    /* Auto-adjust the height to maintain the aspect ratio */
+}
+.portfolio_list .main {
+    width: 300px;
+    height: auto;
+    background-size: contain;
+    background-repeat: no-repeat; /* To prevent the image from repeating */
+    background-position: center;  /* To center the image */
+}
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* semi-transparent black background */
+    z-index: 9999; /* make sure it's above all other elements */
+}
+
+.popup-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* stack them vertically */
+    position: relative;
+    width: 70%; /* adjust as per your requirement */
+    margin: 50px auto;
+    background: #fff; 
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.popup-text {
+    flex: 1;
+    padding: 20px;
+}
+
+.popup-image {
+    max-width: 50%;
+    height: auto;
+}
+
+.popup-button {
+    margin-top: 20px;
+    cursor: pointer;
+}
+#marketingPopup {
+    display: none;
+    /* Other styles for the popup */
+}
+
+#marketingPopup.visible {
+    display: block;
+}
+#hospitalityRewardPopUp {
+    display: flex;
+    position: relative;
+    left: 0;
+    top: 0;
+	justify-content: center; /* Horizontally center */
+    align-items: center;     /* Vertically center */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1001; /* Ensure it appears above other content */
+    overflow-y: auto; /* If content is longer than screen, allow scrolling */
+    /* Add more styling as needed to match your design */
+}
+@media screen and (min-width: 768px) {  /* This breakpoint is for tablet size, you can adjust */
+    #hospitalityRewardPopUp {
+        position: fixed; 
+        top: 0;
+        left: 0;
+    }
+}
+
+/* Default styles (mainly for mobile views) */
+#hospitalityRewardPopUp .content {
+    background-color: #fff;
+    max-width: 80%; /* This will take up 80% of screen width on mobile */
+    height: 90%;    /* This will take up 90% of screen height on mobile */
+    margin: auto;
+    padding: 20px;
+	position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Adjusted styles for desktop views */
+@media screen and (min-width: 768px) {
+    #hospitalityRewardPopUp .content {
+        max-width: 600px; /* Or whatever width you prefer for desktop */
+        height: auto;     /* Let the content decide the height, or set a specific height if needed */
+        padding: 40px;    /* Optionally increase padding for a more spacious look on desktop */
+    }
+}
+@media screen and (min-width: 768px) {
+    #hospitalityRewardPopUp .close-btn {
+        right: 20px; /* Adjust as needed */
+        top: 20px;   /* Adjust as needed */
+    }
+}
+
+.styled-select {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
 
 
 
