@@ -77,7 +77,7 @@
 					<ul class="anchor_nav">
 						<li class="current"><a href="#home">Home</a></li>
 					<li><a href="#contact">Start Here</a></li>
-					<li><a href="#portfolio">Use Cases</a></li>
+					<li><a href="#portfolio">Industries</a></li>
 					<li><a href="#portfolio">Platform</a></li>
 						
 					</ul>
@@ -98,7 +98,7 @@
 					
 					<li class="current"><a href="#home">Home</a></li>
 					<li><a href="#contact">Start Here</a></li>
-					<li><a href="#portfolio">Use Cases</a></li>
+					<li><a href="#portfolio">Industries</a></li>
 					<li><a href="https://app.bambumeta.software">Platform</a></li>
 					
 				</ul>
@@ -143,8 +143,9 @@
 					<h3>Let's start here</h3>
 				</div>
 				<div class="button wow fadeInUp" data-wow-duration="1.5s">
-					<a href="#" id="get-digital-card">Get your digital card</a>
+					<a href="#" id="get-digital-card" onclick="openModal();">Get your digital card</a>
 				</div>
+				
 				
 				
 			</div>
@@ -159,8 +160,8 @@
             <div class="shane_tm_title">
                 <div class="title_flex">
                     <div class="left">
-                        <span>portfolio of actions</span>
-                        <h3>Use Cases</h3>
+                        <span>Use Cases</span>
+                        <h3>Industries</h3>
                     </div>
                     <div class="portfolio_filter">
                         <ul>
@@ -177,11 +178,140 @@
             <div class="shane_tm_portfolio_titles"></div>
             <div class="portfolio_list wow fadeInLeft" data-wow-duration="1.5s">
                 <ul class="gallery_zoom">
-                    <li class="marketing">
+					<li class="hospitality">
+                        <div class="inner">
+                            <div class="entry shane_tm_portfolio_animation_wrap" data-title="Activation" data-category="Hospitality" id="ActivationCardDiv">
+                                <!-- Image to click to show the popup -->
+                                <a href="javascript:void(0);" id="show-popup-btn">
+									<img src="img/activation.png" alt="Show Popup" />
+									
+								</a>
+								
+								<div class="shane_tm_title">
+									<div class="title_flex">
+								<div class="left">
+									<span>Activation</span>
+								</div>
+								</div>
+								</div>
+								
+                                <!-- Mobile title -->
+                                <div class="mobile_title">
+                                    <h3>Hospitality</h3>
+                                    <span>Activation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+					<li class="hospitality">
+                        <div class="inner">
+                            <div class="entry shane_tm_portfolio_animation_wrap" data-title="Reservations" data-category="Hospitality" id="ReservationsCardDiv">
+                                <!-- Image to click to show the popup -->
+								<div id="pop_overlay" style="display: none; position: fixed; top: 0; left: 0; height: 100%; width: 100%; background: rgba(0, 0, 0, 0.7); z-index: 999;"></div>
+								<div id="hospitalityRewardPopUp" style="display:none; /* Other popup styles */">
+									<!-- The content of the popup will be added dynamically via JS -->
+								</div>
+								<div id="marketingPopup" class="popup" style="display: none; width: 500px; max-height: 80vh; overflow-y: auto; padding: 20px; border: 1px solid #aaa; background-color: #fff; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
+
+									<span class="close-btn" onclick="closeMarketingPopup()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
+								
+									<!-- Text section -->
+									<div>
+										<!--<h2>Sample Title</h2> -->
+										<img src="img/reservations_slide.png" alt="Reservations Slide" style="max-width: 100%; width: auto; height: auto;">
+										<!-- <p>
+											This is some sample text for the popup. Adjust as needed.
+										</p>-->
+									</div>
+								
+									<!-- Image section
+									<div style="margin-top: 20px;"> <!-- Added margin-top for spacing 
+										<img src="img/hospitality_base.png" alt="Popup Image" style="max-width: 100%; width: auto; height: auto;">
+									</div>  -->
+								
+									<!-- Centered button -->
+									<div style="margin-top: 20px;">
+										<a href="#" style="display: block; width: 170px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;" onclick="reservationDemo(); return false;">Start Demo</a>
+									</div>
+									
+								</div>
+                                <a href="javascript:void(0);" onclick="showReservationPopup('img/restaurant.png')">
+									<img src="img/restaurant.png" alt="Show Popup" />
+									
+								</a>
+								
+								<div class="shane_tm_title">
+									<div class="title_flex">
+								<div class="left">
+									<span>Reservations</span>
+								</div>
+								</div>
+								</div>
+								
+                                <!-- Mobile title -->
+                                <div class="mobile_title">
+                                    <h3>Hospitality</h3>
+                                    <span>Reservations</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+					
+					<li class="hospitality">
+                        <div class="inner">
+                            <div class="entry shane_tm_portfolio_animation_wrap" data-title="Rewards" data-category="Hospitality" id="RewardsCardDiv">
+                                <!-- Image to click to show the popup -->
+                                <a href="javascript:void(0);" id="show-popup-btn" onclick="hospitalityRewardDemo()">
+									<img src="img/hospitality_loyalty.png" alt="Show Popup" />
+									
+								</a>
+								
+								
+								<div class="shane_tm_title">
+									<div class="title_flex">
+								<div class="left">
+									<span>Rewards</span>
+								</div>
+								</div>
+								</div>
+								
+                                <!-- Mobile title -->
+                                <div class="mobile_title">
+                                    <h3>Hospitality</h3>
+                                    <span>Rewards</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+					<li class="hospitality">
+                        <div class="inner">
+                            <div class="entry shane_tm_portfolio_animation_wrap" data-title="Messaging" data-category="Hospitality" id="MessageCardDiv">
+                                <!-- Image to click to show the popup -->
+                                <a href="javascript:void(0);" id="show-popup-btn" onclick="showReservationPopup()">
+                                    <img src="img/freelunch.png" alt="Show Popup" />
+                                </a>
+								
+								<div class="shane_tm_title">
+									<div class="title_flex">
+								<div class="left">
+									<span>Messaging</span>
+								</div>
+								</div>
+								</div>
+								
+                                <!-- Mobile title -->
+                                <div class="mobile_title">
+                                    <h3>Hospitality</h3>
+                                    <span>Messaging</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                   <!-- <li class="marketing">
                         <div class="inner">
                             <div class="entry shane_tm_portfolio_animation_wrap" data-title="Loyalty Card" data-category="Marketing" id="loyaltyCardDiv">
-                                <!-- Image to click to show the popup -->
-                                <a href="javascript:void(0);" id="show-popup-btn" onclick="showMarketingPopup()">
+                                <!-- Image to click to show the popup 
+                                <a href="javascript:void(0);" id="show-popup-btn" onclick="showReservationPopup()">
                                     <img src="https://loopyloyalty.com/img/loopy-loyalty-digital-stamp-card-solution-apple-wallet-google-pay@2x.png" alt="Show Popup" />
                                     <div class="main" data-img-url="https://loopyloyalty.com/img/loopy-loyalty-digital-stamp-card-solution-apple-wallet-google-pay@2x.png"></div>
                                 </a>
@@ -192,39 +322,8 @@
 								</div>
 								</div>
 								</div>
-								<div id="popup" class="popup-hidden">
-									<div class="popup-content">
-									<div class="popup-content" style="background-color: white;">
-										<span class="popup-close-btn" id="popup-close-btn" onclick="hideMyPopup()">&times;</span>
-										<h2>Use Cases</h2>
-										<!-- ... -->
-										<form id="popup-form">
-											<div style="display: flex; flex-direction: column; background-color: white; padding: 20px;">
-												<label for="actionType">Choose an action:</label>
-												<select id="actionType" name="actionType">
-													<option value="awardPoints">Award Points</option>
-													<option value="punchCard">Punch Card</option>
-												</select>
-											</div>
-											<div class="button wow fadeInUp" data-wow-duration="1.5s">
-												<a href="#" id="marketing-usecase" role="button" onclick="handleMarketingUseCase()">Update your card</a>
-											</div>
-										</form>
-										
-										
-										
-									<!-- ... -->
-								</div>
-								<div id="messageModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background-color:rgba(0,0,0,0.5); z-index:9999;">
-									<div style="max-width: 300px; margin: 100px auto; padding: 20px; background-color: #fff; text-align: center;">
-										<p>Check your card</p>
-										<button id="modalOkButton">OK</button>
-									</div>
-								</div>
 								
-									</div>
-								</div>
-                                <!-- Mobile title -->
+                                <!-- Mobile title 
                                 <div class="mobile_title">
                                     <h3>Loyalty Card</h3>
                                     <span>Marketing</span>
@@ -235,8 +334,8 @@
 					<li class="messaging">
                         <div class="inner">
                             <div class="entry shane_tm_portfolio_animation_wrap" data-title="Loyalty Card" data-category="Marketing" id="loyaltyCardDiv">
-                                <!-- Image to click to show the popup -->
-                                <a href="javascript:void(0);" id="show-popup-btn" onclick="showMarketingPopup()">
+                                <!-- Image to click to show the popup 
+                                <a href="javascript:void(0);" id="show-popup-btn" onclick="showReservationPopup()">
                                     <img src="https://images.ctfassets.net/3prze68gbwl1/1nInWJhO7SqRg6Dl4x5ZlO/536967e26e8705b13e87eeb77840a660/pushNotifications.png?w=700&h=550&fit=pad" alt="Show Popup" />
                                     <div class="main" data-img-url="https://images.ctfassets.net/3prze68gbwl1/1nInWJhO7SqRg6Dl4x5ZlO/536967e26e8705b13e87eeb77840a660/pushNotifications.png?w=700&h=550&fit=pad"></div>
                                 </a>
@@ -247,48 +346,15 @@
 								</div>
 								</div>
 								</div>
-								<div id="popup" class="popup-hidden">
-									<div class="popup-content">
-									<div class="popup-content" style="background-color: white;">
-										<span class="popup-close-btn" id="popup-close-btn" onclick="hideMyPopup()">&times;</span>
-										<h2>Use Cases</h2>
-										<!-- ... -->
-										<form id="popup-form">
-											<div style="display: flex; flex-direction: column; background-color: white; padding: 20px;">
-												<label for="actionType">Choose an action:</label>
-												<select id="actionType" name="actionType">
-													<option value="awardPoints">Award Points</option>
-													<option value="punchCard">Punch Card</option>
-												</select>
-											</div>
-											<div class="button wow fadeInUp" data-wow-duration="1.5s">
-												<a href="#" id="marketing-usecase" role="button" onclick="handleMarketingUseCase()">Update your card</a>
-											</div>
-										</form>
-										
-										
-										
-									<!-- ... -->
-								</div>
-								<div id="messageModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background-color:rgba(0,0,0,0.5); z-index:9999;">
-									<div style="max-width: 300px; margin: 100px auto; padding: 20px; background-color: #fff; text-align: center;">
-										<p>Check your card</p>
-										<button id="modalOkButton">OK</button>
-									</div>
-								</div>
-								<div id="spinnerModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background-color:rgba(0,0,0,0.5); z-index:10000;">
-									<div class="loader" style="border: 16px solid #f3f3f3; border-top: 16px solid #3498db; border-radius: 50%; width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: spin 1s linear infinite;"></div>
-								</div>
-									</div>
-								</div>
-                                <!-- Mobile title -->
+								
+                                <!-- Mobile title 
                                 <div class="mobile_title">
                                     <h3>Loyalty Card</h3>
                                     <span>Marketing</span>
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -350,90 +416,75 @@
 		</div>
 	</div>
 	<!-- /VIDEO -->
-	
-	
-	<!-- Add a container for the spinner -->
-<div class="spinner_container" style="display:none;">
-    <div class="spinner"></div>
-    <p>Creating card...</p>
-</div>
+
 
 
 <!-- MODAL CONTACT -->
-<div class="shane_tm_section" id="portfolio">
-    <div class="shane_tm_contact_popup">
-        <div class="popup_description_wrap">
-            <div class="wrapper">
-
-                <div class="wizard">
-                    <!-- Step 1: Tell us about yourself -->
-                    <div class="step" id="step1">
-                        <div class="contact_title">
-                            <h4>1. Tell us about yourself</h4>
-                        </div>
-                        <div class="fields">
-                            <form id="contact_form" autocomplete="off">
-                                <div class="returnmessage" data-success="Your message has been received, We will contact you soon."></div>
-                                <div class="empty_notice"><span>Please Fill Required Fields</span></div>
-                                <div class="first">
-                                    <ul>
-                                        <li><input id="first_name" name="first_name" type="text" placeholder="First Name" onkeyup="updateOverlayText(this.value); checkFormAndSelector();"></li>
-                                        <li><input id="last_name" name="last_name" type="text" placeholder="Last Name" onkeyup="updateOverlayText(); checkFormAndSelector();"></li>
-                                        <li><input id="email" name="email" type="text" placeholder="Email" onkeyup="checkFormAndSelector();"></li>
-                                        <li><input id="company" name="company" type="text" placeholder="company"></li>
-                                    </ul>
-                                </div>
-                            </form>
-                        </div>
+<div class="custom-modal" id="myModal">
+    <div class="custom-modal-content">
+        <div class="wrapper">
+            <span class="custom-close" onclick="closeModal()">&times;</span>
+            <div class="wizard">
+                <!-- Step 1: Tell us about yourself -->
+                <div class="step" id="step1">
+                    <div class="contact_title" style="margin-bottom: 20px;">
+                        <h4 style="color: #000; font-weight: bold;">1. Tell us about yourself</h4>
                     </div>
-
-                    <!-- Step 2: Preview your card -->
-                    <div class="step" id="step2">
-                        <div class="contact_title">
-                            <h4>2. Preview your card</h4>
-                        </div>
-                        <div class="modal-image">
-                            <img src="img/demo_card.png" alt="Descriptive alt text" id="selectedImage">
-                            <div class="new_overlay-text" id="overlayText"></div>
-                        </div>
-                        <div class="selector-container">
-                            <select id="cardSelector" onchange="updateImage(this.value);">
-                                <option value="none">Choose your industry</option>
-                                <option value="marketing">Retail</option>
-                                <option value="messaging">CPG</option>
-                                <option value="order">Insurance</option>
-                                <option value="receipt">Sports</option>
-                                <option value="location">Hospitality</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Step 3: Get your card -->
-                    <div class="step" id="step3">
-                        <div class="contact_title">
-                            <h4>3. Get your card</h4>
-                        </div>
-                        <div class="shane_tm_button" data-position="left">
-                            <a id="send_message" href="#" onclick="initiateCreateCardProcess();" disabled>Create card</a>
-                        </div>
+                    <div class="fields">
+                        <form id="contact_form" autocomplete="off">
+                            <div class="returnmessage" data-success="Your message has been received, We will contact you soon."></div>
+                            <div class="first">
+                                <ul style="list-style-type: none; padding: 0;">
+                                    <li style="margin-bottom: 15px;"><input id="first_name" name="first_name" type="text" placeholder="First Name" onkeyup="updateOverlayText(this.value); checkFormAndSelector();"></li>
+                                    <li style="margin-bottom: 15px;"><input id="last_name" name="last_name" type="text" placeholder="Last Name" onkeyup="updateOverlayText(); checkFormAndSelector();"></li>
+                                    <li style="margin-bottom: 15px;"><input id="email" name="email" type="text" placeholder="Email" onkeyup="checkFormAndSelector();"></li>
+                                    <li><input id="company" name="company" type="text" placeholder="company"></li>
+                                </ul>
+                            </div>
+                        </form>
                     </div>
                 </div>
-
-                <!-- Wizard Controls -->
-                <div class="wizard-controls">
-                    <button onclick="prevStep()">Previous</button>
-                    <button onclick="nextStep()">Next</button>
+                <!-- Step 2: Preview your card -->
+                <div class="step hidden" id="step2">
+                    <div class="contact_title" style="margin-bottom: 20px;">
+                        <h4 style="color: #000; font-weight: bold;">2. Choose your card</h4>
+                    </div>
+                    <div class="modal-image">
+                        <img src="img/base_card.png" alt="Descriptive alt text" id="selectedImage">
+                        <div class="new_overlay-text" id="overlayText"></div>
+                    </div>
+                    <div class="selector-container" style="margin-top: 20px;">
+                        <select id="cardSelector" onchange="updateImage(this.value);" style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 4px;">
+                            <option value="none">Choose your industry</option>
+                            <option value="retail">Retail</option>
+                            <option value="cpg">CPG</option>
+                            <option value="insurance">Insurance</option>
+                            <option value="sport">Sports</option>
+                            <option value="hospitality">Hospitality</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-        </div>
+                
+				<div id="reservation_popup">
+					<!-- The rest of your popup content -->
+				</div>
+				
+				
+				<!-- Wizard Controls -->
+				<div class="wizard-controls" style="margin-top: 20px;">
+					<a href="#" style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;" onclick="previousStep(); return false;">Previous</a>
+					<a href="#" class="next-btn" style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;" onclick="nextStep(); return false;">Next</a>
+					<a href="#" class="next-btn" style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s; display: none;" onclick="downloadCard();" id="downloadCardButton">Download card</a>
+					<a id="send_message" href="#" style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s; display: none;" onclick="initiateCreateCardProcess();" disabled style="display: block; text-align: center;">Create card</a>
+
+				</div>
+				
+			
     </div>
 </div>
+
 <!-- END MODAL CONTACT -->
 
-
-
-
-<!-- ... (your modal code remains unchanged) ... -->
 
 <style>
     .popup_description_wrap {
@@ -489,9 +540,6 @@
     }
 </style>
 
-
-
-	
 	<!-- CURSOR -->
 	<div class="mouse-cursor cursor-outer"></div>
     <div class="mouse-cursor cursor-inner"></div>
@@ -506,13 +554,551 @@
 	
 </div>
 
+
+
   
 <!-- SCRIPTS -->
 <!--[if lt IE 10]> <script type="text/javascript" src="js/ie8.js"></script> <![endif]-->	
 <script src="js/plugins.js"></script> 
 <script src="js/init.js"></script>
-<script>
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+    console.log("Clearing session storage...");
+    sessionStorage.clear();
+	const defaultIndustry = document.querySelector("#cardSelector").value;
+    updateFilterMenu(defaultIndustry);
+});
+
+cardSelector.addEventListener('change', function() {
+        const selectedValue = this.value;
+        sessionStorage.setItem('selectedIndustry', selectedValue);
+});
+const industryFilters = {
+    hospitality: [
+        { label: 'Reservations', filter: '.hospitality' },
+        { label: 'Rewards', filter: '.hospitality' },
+		{ label: 'Messaging', filter: '.hospitality'},
+		{ label: 'Location Aware', filter: '.hospitality'},
+        { label: 'Payments', filter: '.hospitality'}
+    ],
+    // Add other industries as needed...
+    default: [
+        { label: 'Retail', filter: '.retail' },
+        { label: 'CPG', filter: '.CPG' },
+        { label: 'Insurance', filter: '.insurance'},
+        { label: 'Sports', filter: '.Sports' },
+		{ label: 'Hospitality', filter: '.hospitality'}
+    ]
+};
+
+function updateFilterMenu(selectedIndustry) {
+    const filterMenu = document.querySelector(".portfolio_filter ul");
+    const filters = [{ label: 'All', filter: '*' }].concat(industryFilters[selectedIndustry] || industryFilters.default);
+
+    filterMenu.innerHTML = filters.map(item => `<li><a href="#" data-filter="${item.filter}">${item.label}</a></li>`).join('');
+
+    // If you need to reattach event listeners to these new elements, do it here.
+
+    applyFilter(filters[0].filter);  // Apply the first filter by default
+}
+
+document.querySelector("#cardSelector").addEventListener("change", function() {
+    updateFilterMenu(this.value);
+});
+
+function applyFilter(filterValue) {
+    let portfolioList = document.querySelector(".portfolio_list ul");
+
+    // If filter is for "All", show all the image options
+    if (filterValue === "*") {
+        for (let item of portfolioList.children) {
+            item.style.display = "block";
+        }
+    } else {
+        // Hide all image options
+        for (let item of portfolioList.children) {
+            item.style.display = "none";
+        }
+
+        // Display only the ones that correspond to the clicked filter category
+        let filteredItems = portfolioList.querySelectorAll(filterValue);
+        for (let item of filteredItems) {
+            item.style.display = "block";
+        }
+    }
+}
+
+document.querySelector(".portfolio_filter ul").addEventListener("click", function(e) {
+    e.preventDefault();
+    if (e.target.tagName === "A") {
+        // Remove 'current' class from all menu items
+        for (let li of this.children) {
+            li.querySelector('a').classList.remove("current");
+        }
+        // Add 'current' class to clicked menu item
+        e.target.classList.add("current");
+
+        let filterValue = e.target.getAttribute("data-filter");
+        applyFilter(filterValue);
+    }
+});
+
+
 	// Your JavaScript here
+/**
+ * Makes an API call to issue a wallet.
+ * 
+ * @param {string} accessToken - The access token to use for authentication.
+ * @param {string} firstName - The first name of the person.
+ * @param {string} lastName - The last name of the person.
+ * @param {string} email - The email address of the person.
+ * @param {Object} customData - Any additional data to send with the request.
+ * @param {Function} [onSuccess] - An optional callback to execute on a successful API call.
+ */
+var currentStep = 1;
+function makeIssueWalletApiCall(accessToken, firstName, lastName, email, company, customData, onSuccess) {
+    console.log("makeIssueWalletApiCall started");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const sellerValue = urlParams.get('seller') || "defaultSeller";
+
+    var emailFromSession = sessionStorage.getItem('email');
+    var issueWalletEndpoint = 'https://sandbox.api.bambumeta.software/brands/9/programs/265/issue-wallet?email=' + encodeURIComponent(emailFromSession);
+
+    var apiHeaders = {
+        Authorization: 'Bearer ' + accessToken
+    };
+
+    var issueWalletData = {
+        brandId: 9,
+        programId: 265,
+        templateId: 180,
+		templateTierId: customData && customData.templateTierId ? customData.templateTierId : "",
+        person: {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            company: company
+        },
+        passdata: {
+            metaData: {
+                seller: sellerValue
+            }
+        },
+        ...customData  // Spread in custom data if any
+    };
+
+    console.log('Constructed issueWalletData:', issueWalletData);
+
+    $.ajax({
+        url: getProxyURL(issueWalletEndpoint),
+        method: 'POST',
+        headers: apiHeaders,
+        data: JSON.stringify(issueWalletData),
+        contentType: 'application/json',
+        success: function(issueWalletResponse) {
+            console.log('Success handler triggered:', issueWalletResponse);
+
+            if (issueWalletResponse.passId || issueWalletResponse.personId) {
+                sessionStorage.setItem("passId", issueWalletResponse.passId);
+                sessionStorage.setItem("personId", issueWalletResponse.personId);
+
+                if (issueWalletResponse.downloadUrl) {
+                    sessionStorage.setItem("downloadUrl", issueWalletResponse.downloadUrl);
+                }
+
+                if (typeof onSuccess === 'function') {
+                    console.log("onSuccess callback found, invoking it now.");
+                    onSuccess();
+                } else {
+                    console.log("onSuccess callback not provided or not a function");
+                }
+            } else {
+                console.log("issueWalletResponse does not contain passId and/or personId");
+            }
+        },
+        error: function(error) {
+            console.log('Error handler triggered:', error);
+        }
+    });
+}
+
+// Get all input fields from step 1
+const step1Inputs = document.querySelectorAll('#step1 input');
+function showReservationPopup() {
+    var popup = document.getElementById('marketingPopup');
+	var overlay = document.getElementById('pop_overlay');
+    popup.style.display = 'block';
+	overlay.style.display = "block";
+}
+
+function closeMarketingPopup() {
+    var popup = document.getElementById('marketingPopup');
+	var overlay = document.getElementById('pop_overlay');
+    popup.style.display = 'none';
+	overlay.style.display = "none";
+}
+
+function cardReservation() {
+    console.log('cardReservation function called');
+
+    // Retrieve the values from sessionStorage
+    var storedFirstName = sessionStorage.getItem('firs_name');
+    var storedLastName = sessionStorage.getItem('last_name');
+    var storedEmail = sessionStorage.getItem('email');
+
+    // Debugging: Log the values
+    console.log('Stored values:', storedFirstName, storedLastName, storedEmail);
+
+    obtainToken((accessToken) => {
+        // Modify the body for the makeIssueWalletApiCall and call it
+        let customData = {
+            templateTierId: 115
+        };
+
+        // Define the onSuccess callback
+        function updatePopup() {
+            console.log("Updating marketing popup content after successful API call");
+    
+            // Target the correct popup element using jQuery for consistency
+            $('#marketingPopup').html(`
+                <div style="width: 50%; float: left;">
+                    <h2>Card Update</h2>
+                    <p>Your card is now updated.</p>
+                </div>
+                <div style="width: 50%; float: right;">
+                    <img src="img/hospitality_base.png" alt="Popup Image" style="max-width: 100%;">
+                </div>
+                <div style="clear: both;"></div>
+                <div>
+                    <button style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;" onclick="closePopup()">OK</button>
+                </div>
+            `);
+        }
+
+        // Now call the API function with the callback
+        makeIssueWalletApiCall(accessToken, storedFirstName, storedLastName, storedEmail, customData, updatePopup);
+    });
+}
+
+function closePopup() {
+    $('#marketingPopup').hide();
+	$('#pop_overlay').hide();
+}
+
+
+
+
+function hideSpinner() {
+    var spinner = document.getElementById("spinnerModal");
+    spinner.style.display = "none";
+}
+function showMessageModal() {
+    var modal = document.getElementById("messageModal");
+    modal.style.display = "block";
+}
+function updateOverlayText() {
+    var firstName = document.getElementById('first_name').value;
+    var lastName = document.getElementById('last_name').value;
+    var combinedName = (firstName + " " + lastName).trim();
+    
+    var overlay = document.getElementById('overlayText');
+    overlay.textContent = combinedName ? combinedName : "Your Text Here";
+}
+function downloadCard() {
+    const downloadButton = document.getElementById("downloadCardButton");
+    const downloadUrl = 'https://wallet-pass-sandbox.bambumeta.software' + sessionStorage.getItem("downloadUrl");
+    downloadButton.href = downloadUrl;
+    downloadButton.target = "_blank";
+    downloadButton.click();
+}
+function generateRandomNumber() {
+    // This will generate a random number between 100000 and 999999. Adjust as needed.
+    return Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
+}
+
+function initiateCreateCardProcess() {
+    // First, fetch the token.
+    obtainToken(function(accessToken) {
+        if (accessToken) {
+            // Now, retrieve form values.
+            const firstName = document.getElementById("first_name").value;
+            const lastName = document.getElementById("last_name").value;
+            const email = document.getElementById("email").value;
+            const company = document.getElementById("company").value;
+
+            // Get the selected industry
+            const industry = document.getElementById('cardSelector').value;
+            let templateTierId;
+            switch (industry) {
+                case "retail":
+                    templateTierId = 100;
+                    break;
+                case "hospitality":
+                    templateTierId = 130;
+                    break;
+                case "cpg":
+                    // assign the appropriate templateTierId for CPG
+                    break;
+                case "insurance":
+                    // assign the appropriate templateTierId for Insurance
+                    break;
+                case "sport":
+                    // assign the appropriate templateTierId for Sports
+                    break;
+                // ... add more cases for other industries if needed
+                default:
+                    console.error('Invalid industry selected.');
+                    return;
+            }
+			const hospitality_loyalty = generateRandomNumber();
+            // Store values in the session storage
+            sessionStorage.setItem("email", email);
+            sessionStorage.setItem('first_name', firstName);
+            sessionStorage.setItem('last_name', lastName);
+            sessionStorage.setItem('company', company);
+
+            // Custom data with templateTierId
+			const customData = {
+                templateTierId: templateTierId,
+                passdata: {
+                    metaData: {
+                        loyaltyAccount: hospitality_loyalty.toString()  // Convert to string if needed
+                    }
+                }
+            };
+
+            // Define the onSuccess callback
+            function handleSuccess() {
+                console.log('Card created successfully from initiateCreateCardProcess');
+                
+                // Hide Next and Previous buttons, the "Create card" button and show the "Download card" button.
+                $('a[onclick="previousStep(); return false;"]').hide();
+                $('a[onclick="nextStep(); return false;"]').hide();
+                $('#downloadCardButton').show();
+                $('#send_message').hide();  // Hide the "Create card" button
+            }
+
+            // Call makeIssueWalletApiCall with the necessary values, customData, and the onSuccess callback
+            makeIssueWalletApiCall(accessToken, firstName, lastName, email, company, customData, handleSuccess);
+        } else {
+            console.log('Failed to fetch the access token.');
+        }
+    });
+}
+
+
+function addRecordToHubSpot(firstName, lastName, email, phone, company, website) {
+    const hubSpotURL = "https://api.hubapi.com/crm/v3/objects/contacts/batch/create";
+    const bearerToken = "pat-na1-7f6cdc57-a7d9-427c-bd08-a2af4f399b59";  // Replace with your actual token.
+
+    const data = {
+        inputs: [
+            {
+                properties: {
+                    email: email,
+                    phone: phone,
+                    company: company,
+                    website: website,
+                    lastname: lastName,
+                    firstname: firstName
+                    
+                },
+                associations: []
+            }
+        ]
+    };
+
+    // Fetch using the proxy URL
+    fetch(getProxyURL(hubSpotURL), {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${bearerToken}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Success:", data);
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+    });
+}
+function getProxyURL(targetURL) {
+    const baseURL = 'https://bambu-cors-9374b174ef1e.herokuapp.com/proxy?url=';
+    return baseURL + encodeURIComponent(targetURL);
+}
+function showSpinner() {
+    var spinner = document.getElementById("spinnerModal");
+    console.log(spinner); // Log the value here
+    spinner.style.display = "block";
+}
+function updateImage(category) {
+    var imageUrl = "";
+    var overlayText = "";
+    switch(category) {
+        case 'retail':
+            imageUrl = "img/demo_card.png";
+            overlayText = "Tye your name on the form";
+            break;
+        case 'cpg':
+            imageUrl = "https://via.placeholder.com/150?text=Messaging";
+            overlayText = "Messaging Details";
+            break;
+        case 'insurance':
+            imageUrl = "https://via.placeholder.com/150?text=Order+Notifications";
+            overlayText = "Order Notification Info";
+            break;
+        case 'sport':
+            imageUrl = "https://via.placeholder.com/150?text=Digital+Receipt";
+            overlayText = "Digital Receipt Overview";
+            break;
+        case 'hospitality':
+            imageUrl = "img/hospitality_base.png";
+            overlayText = "xxxxxx";
+            break;
+    }
+    checkFormAndSelector();
+    var imageElement = document.getElementById('selectedImage');
+    var textElement = document.getElementById('overlayText');
+    
+    imageElement.src = imageUrl;
+    textElement.textContent = overlayText;
+}
+function checkFormAndSelector() {
+    let firstName = document.getElementById('first_name').value;
+    let lastName = document.getElementById('last_name').value;
+    let email = document.getElementById('email').value;
+    let imageSelected = document.getElementById('selectedImage').src;
+  
+    let defaultImage = "path_to_your_default_image"; // replace with your default image path
+
+    let button = document.getElementById('send_message');
+
+    if(firstName && lastName && email && imageSelected !== defaultImage) {
+        button.removeAttribute('disabled');
+    } else {
+        button.setAttribute('disabled', 'true');
+    }
+}
+function obtainToken(callback) {
+    const authUrl = 'https://sandbox-auth.bambumeta.software/oauth2/token';
+    const tokenData = {
+        grant_type: 'client_credentials'
+    };
+    const tokenHeaders = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Basic ' + btoa('4mml4rs040gcmknikh8eg6170q' + ':' + '9381m4jhqji7eir2nmpg9fph0aj2bsu1j508mrc3e57aar99727')
+    };
+
+    $.ajax({
+        url: authUrl,
+        method: 'POST',
+        headers: tokenHeaders,
+        data: tokenData,
+        success: function(tokenResponse) {
+            const accessToken = tokenResponse.access_token;
+
+            // Store the token and expiration time in sessionStorage
+            const currentTime = new Date().getTime();  // Current time in milliseconds
+            const expiresAt = currentTime + (tokenResponse.expires_in * 1000);  // Expiration time in milliseconds
+
+            sessionStorage.setItem('bearerToken', accessToken);
+            sessionStorage.setItem('tokenExpiresAt', expiresAt.toString());
+
+            console.log('Generated token:', accessToken);
+            if (typeof callback === 'function') callback(accessToken);
+        },
+        error: function(error) {
+            console.log('Failed to obtain bearer token', error);
+            document.querySelector('.spinner_container').style.display = 'none';  // Hide the spinner
+        }
+    });
+}
+function isTokenValid() {
+    const currentTime = new Date().getTime();
+    const expiresAt = Number(sessionStorage.getItem('tokenExpiresAt') || 0);
+    return currentTime < expiresAt;
+}
+
+function openModal() {
+    document.getElementById('myModal').style.display = 'block';
+}
+
+function nextStep() {
+    console.log("nextStep called. Current step:", currentStep);
+
+    // Increment the step
+    if (currentStep < 2) {
+        currentStep++;
+        console.log("Incrementing step to: ", currentStep);
+        showStep(currentStep);
+        
+        // If you're on step 2
+        if (currentStep === 2) {
+            document.querySelector(".wizard-controls .next-btn").style.display = "none";
+            document.getElementById("send_message").style.display = "block";
+        } else { 
+            // If you're on any other step (like step 1)
+            document.querySelector(".wizard-controls .next-btn").style.display = "block";
+            document.getElementById("send_message").style.display = "none";
+        }
+    } else {
+        console.log("Cannot increment step further.");
+    }
+}
+
+function showStep(step) {
+    // Grab all steps
+    console.log("Attempting to show step: ", step);
+    const steps = document.querySelectorAll('.wizard .step');
+    
+    // Hide all of them
+    for (let s of steps) {
+        s.style.display = 'none';  
+    }
+    
+    // Show the specified step
+    document.querySelector('#step' + step).style.display = 'block'; 
+}
+function previousStep() {
+    console.log("previousStep called. Current step:", currentStep);
+
+    // Decrement the step
+    if (currentStep > 1) {
+        currentStep--;
+        console.log("Decrementing step to: ", currentStep);
+        showStep(currentStep);
+
+        // If you're moving back to step 1
+        if (currentStep === 1) {
+            document.querySelector(".wizard-controls .next-btn").style.display = "block";
+            document.getElementById("send_message").style.display = "none";
+        }
+    } else {
+        console.log("Cannot decrement step further.");
+    }
+}
+
+function closeModal() {
+    // Close the myModal
+    var myModal = document.getElementById("myModal");
+    if (myModal) { 
+        myModal.style.display = "none";
+    }
+
+    // Close the .shane_tm_modalbox
+    var shaneModal = document.querySelector(".shane_tm_modalbox");
+    if (shaneModal) { 
+        shaneModal.style.display = "none";
+    }
+}
+
+
+
 	const buttons = document.querySelectorAll('.selector-button');
 	const selectedImage = document.getElementById('selectedImage');
 
@@ -522,6 +1108,221 @@
 			selectedImage.src = imageUrl;
 		});
 	});
+	function reservationDemo() {
+    var marketingPopupElement = document.getElementById('marketingPopup');
+
+	var formContent = `
+    <div style="padding: 20px; background-color: #ffffff; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); position: relative;">
+        <!-- Close button -->
+        <span onclick="closeMarketingPopup()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px; color: #555;">&times;</span>
+
+        <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Reservation Form</h2>
+        
+        <label style="display: block; margin-bottom: 8px;">Select Restaurant:</label>
+        <div class="selector-container" style="margin-bottom: 16px;">
+            <select id="restaurantDropdown" style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 4px;">
+                <option value="restaurantA">Restaurant A</option>
+                <option value="restaurantB">Restaurant B</option>
+                <!-- ... -->
+            </select>
+        </div>
+
+        <label style="display: block; margin-bottom: 8px;">Reservation Date:</label>
+        <input type="date" id="reservationDate" style="width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #aaa; border-radius: 4px;">
+
+        <label style="display: block; margin-bottom: 8px;">Number of People:</label>
+        <input type="text" id="numOfPeople" style="width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #aaa; border-radius: 4px;">
+
+        <button onclick="submitReservation()" style="display: block; width: 200px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Submit Reservation</button>
+    </div>
+`;
+
+
+
+    marketingPopupElement.innerHTML = formContent;
+}
+function formatDateToMMDDYY(inputDate) {
+    const date = new Date(inputDate);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const year = String(date.getFullYear()).slice(-2); // Get the last 2 characters of the year
+
+    return `${month}/${day}/${year}`;
+}
+
+function submitReservation() {
+    var restaurant = document.getElementById('restaurantDropdown').value;
+    var reservationDate = document.getElementById('reservationDate').value;
+    var headcount = document.getElementById('numOfPeople').value;
+
+    // Format the reservation date to MM/DD/YY
+    var formattedReservationDate = formatDateToMMDDYY(reservationDate);
+
+    // Retrieve values from sessionStorage
+    var email = sessionStorage.getItem('email');
+    var first_name = sessionStorage.getItem('first_name');
+    var last_name = sessionStorage.getItem('last_name');
+    var company = sessionStorage.getItem('company');
+
+    obtainToken((accessToken) => {
+        let issueWalletData = {
+            brandId: 9,
+            programId: 265,
+            templateId: 180,
+			templateTierId: 115,
+            person: {
+                first_name: first_name,
+                last_name: last_name,
+                email: email,
+                company: company
+            },
+            passdata: {
+                metaData: {
+                    reservationDate: formattedReservationDate,
+                    headcount: headcount
+                }
+            }
+        };
+
+        console.log('Constructed issueWalletData for Reservation:', issueWalletData);
+
+        // Calling the makeIssueWalletApiCall with the appropriate arguments
+        makeIssueWalletApiCall(accessToken, first_name, last_name, email, company, issueWalletData, (response, error) => {
+            if (error) {
+                console.error("There was an error:", error);
+                // Show some error message to the user, maybe update the DOM or show a popup
+            } else {
+                console.log("API call successful. Response:", response);
+                var popupContent = `
+                <h2>Success!</h2>
+                <p>Check your wallet card to see the changes.</p>
+                <button onclick="closeMarketingPopup();" style="display: block; width: 200px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">OK</button>
+                `;
+
+                document.getElementById('marketingPopup').innerHTML = popupContent;
+            }
+        });
+    });
+}
+
+
+function showHospitalityRewardPopUp() {
+    var popup = document.getElementById('hospitalityRewardPopUp');
+    popup.style.display = 'block';
+}
+
+function hideHospitalityRewardPopUp() {
+    var popup = document.getElementById('hospitalityRewardPopUp');
+    popup.style.display = 'none';
+}
+
+function hospitalityRewardDemo() {
+    // Initial content with the Start Demo button
+	var initialContent = `
+        <div class="content">
+			<span class="close-btn" onclick="hideHospitalityRewardPopUp()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
+            <img src="img/hospitality_rewards_slide.png" alt="Hospitality Rewards" style="max-width: 100%; width: auto; height: auto; display: block; margin: 20px auto;">
+            <p>Some description for the demo...</p>
+            <button onclick="startDemoContent()" style="display: block; width: 170px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Start Demo</button>
+        </div>
+`;
+
+
+    // Set the content and display the popup
+    document.getElementById('hospitalityRewardPopUp').innerHTML = initialContent;
+    showHospitalityRewardPopUp(); 
+}
+
+function startDemoContent() {
+    // Placeholder content for now
+    var demoContent = `
+	<div class="content">
+    <span class="close-btn" onclick="hideHospitalityRewardPopUp()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
+    <h2>Demo Started</h2>
+    <p>More details and interactions...</p>
+
+	<div class="selector-container">
+    <select id="rewardSelection">
+        <option value="0">Choose Reward</option>
+        <option value="1">Taco Tuesday Meal</option>
+        <option value="2">Bacardi Drink</option>
+        <option value="3">Dinner over $50.00</option>
+        <option value="4">Dessert with dinner</option>
+    </select>
+</div>
+
+
+
+    <button onclick="issueReward()" style="display: block; width: 170px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Issue Reward</button>
+</div>
+
+    `;
+
+    document.getElementById('hospitalityRewardPopUp').innerHTML = demoContent;
+}
+function issueReward() {
+    let email = sessionStorage.getItem('email');
+    let firstName = sessionStorage.getItem('first_name');
+    let lastName = sessionStorage.getItem('last_name');
+    let company = sessionStorage.getItem('company');
+    let accessToken = sessionStorage.getItem('bearerToken');
+    let num_choices = parseInt(sessionStorage.getItem('num_choices') || "0");
+    
+    // Increment choices
+    num_choices++;
+
+    // Check if we've reached the maximum number of choices and return if we have
+    if(num_choices > 4) {
+        console.error('Maximum number of choices reached');
+        return;
+    }
+
+    // Store the incremented value back into sessionStorage
+    sessionStorage.setItem('num_choices', num_choices.toString());
+    
+    let templateTierId;
+    switch (num_choices) {
+        case 1:
+            templateTierId = 131;
+			points = 100;
+            break;
+        case 2:
+            templateTierId = 132;
+			points = 200;
+            break;
+        case 3:
+            templateTierId = 133;
+			points = 300;
+            break;
+        case 4:
+            templateTierId = 134;
+			points = 400;
+            break;
+        default:
+            console.error('Invalid number of choices');
+            return;
+    }
+
+    let customData = {
+        templateTierId: templateTierId,  // Pass templateTierId directly, not as metaData
+		passdata: {
+            points: points.toString()  // Convert points to string as you have it in string format in the structure
+        }
+    };
+
+    // Now, call your existing function with the constructed data
+    makeIssueWalletApiCall(accessToken, firstName, lastName, email, company, customData, function() {
+        console.log("Reward issued successfully.");
+    });
+}
+
+
+
+
+
+
+
+
 </script>
 <!-- /SCRIPTS -->
 <!-- Other HTML content above -->
