@@ -180,7 +180,6 @@
                 <ul class="gallery_zoom">
 					<li class="hospitality">
                         <div class="inner">
-                            <div id="pop_overlay" style="display: none; position: fixed; top: 0; left: 0; height: 100%; width: 100%; background: rgba(0, 0, 0, 0.7); z-index: 999;"></div>
                             <div class="entry shane_tm_portfolio_animation_wrap" data-title="Activation" data-category="Hospitality" id="ActivationCardDiv">
                                 <!-- Image to click to show the popup -->
                                 <a href="javascript:void(0);" id="show-popup-btn">
@@ -204,16 +203,42 @@
                             </div>
                         </div>
                     </li>
-                    <li class="hospitality">
+					<li class="hospitality">
                         <div class="inner">
-                            <div class="entry shane_tm_portfolio_animation_wrap" data-title="Reservations" data-category="Hospitality" id="ActivationCardDiv">
+                            <div class="entry shane_tm_portfolio_animation_wrap" data-title="Reservations" data-category="Hospitality" id="ReservationsCardDiv">
                                 <!-- Image to click to show the popup -->
-                                <a href="javascript:void(0);" id="show-popup-btn" onclick="showReservationPopup()">
-									<img src="img/restaurant.png" alt="Show Popup" />
-								</a>
-								<div id="reservation_popUp" style="display:none; /* Other popup styles */">
+								<div id="pop_overlay" style="display: none; position: fixed; top: 0; left: 0; height: 100%; width: 100%; background: rgba(0, 0, 0, 0.7); z-index: 999;"></div>
+								<div id="hospitalityRewardPopUp" style="display:none; /* Other popup styles */">
 									<!-- The content of the popup will be added dynamically via JS -->
 								</div>
+								<div id="hospitality_message_popup" style="display:none;">
+									
+								</div>
+								<!-- Dynamic Popup Container -->
+                                <div id="hospitality_location_popup" style="display:none; /* Other popup styles */">
+                                <!-- The content of the popup will be added dynamically via JS -->
+                                </div>
+
+								<div id="marketingPopup" class="popup" style="display: none; width: 500px; max-height: 80vh; overflow-y: auto; padding: 20px; border: 1px solid #aaa; background-color: #fff; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
+
+									<span class="close-btn" onclick="closeMarketingPopup()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
+								
+									<!-- Text section -->
+									<div id ="hospitality_reservation_popup"style="display: none; width: 500px; max-height: 80vh; overflow-y: auto; padding: 20px; border: 1px solid #aaa; background-color: #fff; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
+										<img src="img/reservations_slide.png" alt="Reservations Slide" style="max-width: 100%; width: auto; height: auto;">
+									</div>
+								
+									<!-- Centered button -->
+									<div style="margin-top: 20px;">
+										<a href="#" style="display: block; width: 170px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;" onclick="reservationDemo(); return false;">Start Demo</a>
+									</div>
+									
+								</div>						
+                                <div id="hospitality_reservation_popup" style="display: none; width: 500px; max-height: 80vh; overflow-y: auto; padding: 20px; border: 1px solid #aaa; background-color: #fff; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
+                                    <img src="img/reservations_slide.png" alt="Reservations Slide" style="max-width: 100%; width: auto; height: auto;">
+                                </div>
+                                
+								
 								<div class="shane_tm_title">
 									<div class="title_flex">
 								<div class="left">
@@ -225,18 +250,21 @@
                                 <!-- Mobile title -->
                                 <div class="mobile_title">
                                     <h3>Hospitality</h3>
-                                    <span>Activation</span>
+                                    <span>Reservations</span>
                                 </div>
                             </div>
                         </div>
-                    </li>		
+                    </li>				
 					<li class="hospitality">
                         <div class="inner">
                             <div class="entry shane_tm_portfolio_animation_wrap" data-title="Rewards" data-category="Hospitality" id="RewardsCardDiv">
                                 <!-- Image to click to show the popup -->
                                 <a href="javascript:void(0);" id="show-popup-btn" onclick="hospitalityRewardDemo()">
 									<img src="img/hospitality_loyalty.png" alt="Show Popup" />
+									
 								</a>
+								
+								
 								<div class="shane_tm_title">
 									<div class="title_flex">
 								<div class="left">
@@ -244,9 +272,7 @@
 								</div>
 								</div>
 								</div>
-								<div id="hospitalityRewardPopUp" style="display:none; /* Other popup styles */">
-									<!-- The content of the popup will be added dynamically via JS -->
-								</div>
+								
                                 <!-- Mobile title -->
                                 <div class="mobile_title">
                                     <h3>Hospitality</h3>
@@ -262,7 +288,9 @@
                                 <a href="javascript:void(0);" id="show-popup-btn" onclick="showHospitalityMessagePopup()">
 									<img src="img/hospitality_message.png" alt="Show Popup" />
 								</a>
-
+								
+								
+								
 								<div class="shane_tm_title">
 									<div class="title_flex">
 								<div class="left">
@@ -270,8 +298,7 @@
 								</div>
 								</div>
 								</div>
-								<div id="hospitality_message_popup" style="display:none;">
-								</div>
+								
                                 <!-- Mobile title -->
                                 <div class="mobile_title">
                                     <h3>Hospitality</h3>
@@ -310,6 +337,9 @@
                                 <a href="javascript:void(0);" id="show-popup-btn" onclick="showHospitalityMessagePopup()">
 									<img src="img/hospitality_payment.png" alt="Show Popup" />
 								</a>
+								
+								
+								
 								<div class="shane_tm_title">
 									<div class="title_flex">
 								<div class="left">
@@ -331,7 +361,9 @@
         </div>
     </div>
 </div>
-
+<div id="spinnerModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background-color:rgba(0,0,0,0.5); z-index:10000;">
+	<div class="spinner" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+</div>
 <!-- /PORTFOLIO -->
 
 	<!-- SKILLS -->
@@ -434,6 +466,9 @@
                     </div>
                 </div>
                 
+				<div id="reservation_popup">
+					<!-- The rest of your popup content -->
+				</div>
 				
 				
 				<!-- Wizard Controls -->
@@ -700,22 +735,11 @@ function makeIssueWalletApiCall(accessToken, firstName, lastName, email, company
 
 // Get all input fields from step 1
 const step1Inputs = document.querySelectorAll('#step1 input');
-function showReservationPopup() {
-    const initialContent = `
-        <div class="reservation-popup-content">
-            <span class="close-btn" onclick="hideReservationPopUp()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
-            <button onclick="reservationDemo()" style="display: block; width: 170px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Start Demo</button>
-        </div>
-    `;
-
-    // Set the content and display the popup
-    document.getElementById('reservation_popUp').innerHTML = initialContent;
-    document.getElementById('pop_overlay').style.display = 'block';
-    document.getElementById('reservation_popUp').style.display = 'block';
-}
-function hideReservationPopUp() {
-    document.getElementById('pop_overlay').style.display = 'none';
-    document.getElementById('reservation_popUp').style.display = 'none';
+function showReservationPopup(imageSrc) {
+    const popup = document.getElementById('hospitality_reservation_popup');
+    const imageElement = popup.querySelector('img');
+    imageElement.src = imageSrc;
+    popup.style.display = 'block';
 }
 
 
@@ -1097,18 +1121,17 @@ function closeModal() {
 		});
 	});
 	function reservationDemo() {
-    var reservationPopupElement = document.getElementById('reservation_popUp');
+    var marketingPopupElement = document.getElementById('marketingPopup');
 
-    // Check if the element exists
-    if (reservationPopupElement !== null) {
-        var formContent = `
-        <div class="hospitalityRewardPopUp">
-            <!-- Close button -->
-            <span onclick="hideReservationPopUp()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px; color: #555;">&times;</span>
+	var formContent = `
+    <div style="padding: 20px; background-color: #ffffff; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); position: relative;">
+        <!-- Close button -->
+        <span onclick="closeMarketingPopup()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px; color: #555;">&times;</span>
 
-            <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Reservation Form</h2>
-            
-            <div class="selector-container" style="margin-bottom: 16px;">
+        <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Reservation Form</h2>
+        
+        <label style="display: block; margin-bottom: 8px;">Select Restaurant:</label>
+        <div class="selector-container" style="margin-bottom: 16px;">
             <select id="restaurantDropdown" style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 4px;">
                 <option value="restaurantA">Restaurant A</option>
                 <option value="restaurantB">Restaurant B</option>
@@ -1123,15 +1146,13 @@ function closeModal() {
         <input type="text" id="numOfPeople" style="width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #aaa; border-radius: 4px;">
 
         <button onclick="submitReservation()" style="display: block; width: 200px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Submit Reservation</button>
-        </div>
-        `;
+    </div>
+`;
 
-        reservationPopupElement.innerHTML = formContent;
-    } else {
-        console.error('Element with ID "reservation_popUp" not found.');
-    }
+
+
+    marketingPopupElement.innerHTML = formContent;
 }
-
 function formatDateToMMDDYY(inputDate) {
     const date = new Date(inputDate);
     const day = String(date.getDate()).padStart(2, '0');
@@ -1206,10 +1227,6 @@ function hideHospitalityRewardPopUp() {
     var popup = document.getElementById('hospitalityRewardPopUp');
     popup.style.display = 'none';
 }
-function hideHospitalityMessagePopUp() {
-    var popup = document.getElementById('hospitality_message_popup');
-    popup.style.display = 'none';
-}
 
 function hospitalityRewardDemo() {
     // Initial content with the Start Demo button
@@ -1218,7 +1235,7 @@ function hospitalityRewardDemo() {
 			<span class="close-btn" onclick="hideHospitalityRewardPopUp()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
             <img src="img/hospitality_rewards_slide.png" alt="Hospitality Rewards" style="max-width: 100%; width: auto; height: auto; display: block; margin: 20px auto;">
             <p>Some description for the demo...</p>
-            <button onclick="startRewardContent()" style="display: block; width: 170px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Start Demo</button>
+            <button onclick="startDemoContent()" style="display: block; width: 170px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Start Demo</button>
         </div>
 `;
 
@@ -1228,35 +1245,7 @@ function hospitalityRewardDemo() {
     showHospitalityRewardPopUp(); 
 }
 
-function startRewardContent() {
-    var reward_PopupElement = document.getElementById('hospitalityRewardPopUp');
-    var demoContent = `
-        <div style="background-color: #fff; max-width: 600px; height: 500px; margin: auto; padding: 20px; position: relative; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); overflow-y: auto;">
-            <span class="close-btn" onclick="hideHospitalityRewardPopUp()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
-            <h2>Demo Started</h2>
-            <p>More details and interactions...</p>
-            <div class="selector-container">
-                <select id="rewardSelection">
-                    <option value="0">Choose Reward</option>
-                    <option value="1">Taco Tuesday Meal</option>
-                    <option value="2">Bacardi Drink</option>
-                    <option value="3">Dinner over $50.00</option>
-                    <option value="4">Dessert with dinner</option>
-                </select>
-            </div>
-            <button onclick="issueReward()" style="display: block; width: 170px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Issue Reward</button>
-        </div>
-    `;
-
-    // Check if the element exists before attempting to modify it
-    if(reward_PopupElement !== null) {
-        reward_PopupElement.innerHTML = demoContent;
-    } else {
-        console.error('Element with ID "hospitality_reward_popup" not found.');
-    }
-}
-
-function startReservationContent() {
+function startDemoContent() {
     // Placeholder content for now
     var demoContent = `
 	<div class="content">
@@ -1339,40 +1328,10 @@ function issueReward() {
     });
 }
 
-
-function showHospitalityMessagePopup() {
-    var message_PopupElement = document.getElementById('hospitality_message_popup');
-    var overlayElement = document.getElementById('pop_overlay');
-
-    if (message_PopupElement !== null && overlayElement !== null) {
-        var formContent =  `
-            <div style="background-color: #fff; max-width: 600px; height: 500px; margin: auto; padding: 20px; position: relative; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); overflow-y: auto;">
-                <span class="close-btn" onclick="hideHospitalityMessagePopUp" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
-                <img src="img/hospitality_rewards_slide.png" alt="Hospitality Rewards" style="max-width: 100%; width: auto; height: auto; display: block; margin: 20px auto;">
-                <p style="margin: 16px 0;">Some description for the demo...</p>
-                <button onclick="startMessagingContent()" style="display: block; width: 170px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Start Demo</button>
-            </div>
-        `;
-
-        message_PopupElement.innerHTML = formContent;
-        message_PopupElement.style.display = 'flex';
-        message_PopupElement.style.position = 'fixed';  // Fixed position
-        message_PopupElement.style.left = '0';
-        message_PopupElement.style.top = '0';
-        message_PopupElement.style.justifyContent = 'center';
-        message_PopupElement.style.alignItems = 'center';
-        message_PopupElement.style.width = '100%';
-        message_PopupElement.style.height = '100%';
-        message_PopupElement.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-        message_PopupElement.style.zIndex = '1001';
-        message_PopupElement.style.overflowY = 'auto';  // Scrollable
-
-        overlayElement.style.display = 'block';  // Show the overlay
-    } else {
-        console.error('Element with ID "hospitality_message_popup" or "pop_overlay" not found.');
-    }
+function showReservationPopup() {
+    document.getElementById('hospitality_reservation_popup').style.display = 'block';
 }
-function startMessagingContent() {
+function showMessagingContent() {
     const content = `
         <div class="popup-content">
             <span class="close-btn" onclick="closeHospitalityMessagePopup()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
@@ -1384,10 +1343,6 @@ function startMessagingContent() {
 
     document.getElementById('hospitality_message_popup').innerHTML = content;
 }
-
-
-
-
 
 
 function hospitality_messaging() {
@@ -1413,9 +1368,24 @@ function hospitality_messaging() {
 }
 
 
+function showHospitalityMessagePopup() {
+    var hospitality_MessagingPopup_content = `
+        <div class="content">
+			<span class="close-btn" onclick="hideHospitalityRewardPopUp()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
+            <img src="img/hospitality_rewards_slide.png" alt="Hospitality Rewards" style="max-width: 100%; width: auto; height: auto; display: block; margin: 20px auto;">
+            <p>Some description for the demo...</p>
+            <button onclick="startDemoContent()" style="display: block; width: 170px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Start Demo</button>
+        </div>
+`;
+
+    document.getElementById('hospitality_message_popup').innerHTML = hospitality_MessagingPopup_content;
+    document.getElementById('hospitality_message_popup').style.display = 'block';
+}
+
+
+
 function closeHospitalityMessagePopup() {
     document.getElementById('hospitality_message_popup').style.display = 'none';
-    document.getElementById('pop_overlay').style.display = 'none';
 }
 function updateWalletPass(bearerToken) {
     const emailFromSession = sessionStorage.getItem('email');
@@ -1494,7 +1464,16 @@ function saveToGoogleSheets(firstName, lastName, email, company, industry, hospi
         }
     });
 }
-
+function showHospitalityMessagePopup() {
+    const popup = document.getElementById('hospitality_location_popup');
+    popup.innerHTML = `
+        <div class="popup-content">
+            <p>Placeholder text for the first popup.</p>
+            <button onclick="showGoogleMapsWidget()">Start Demo</button>
+        </div>
+    `;
+    popup.style.display = 'block';
+}
 
 
 
