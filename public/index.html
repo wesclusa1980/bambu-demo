@@ -702,8 +702,8 @@ function makeIssueWalletApiCall(accessToken, firstName, lastName, email, company
 const step1Inputs = document.querySelectorAll('#step1 input');
 function showReservationPopup() {
     const initialContent = `
-        <div class="reservation-popup-content">
-            <span class="close-btn" onclick="hideReservationPopUp()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
+        <div style="background-color: #fff; max-width: 600px; height: auto; margin: auto; padding: 20px; position: relative; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); z-index: 2000;">
+            <span onclick="hideReservationPopUp()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px; z-index: 2001;">&times;</span>
             <button onclick="reservationDemo()" style="display: block; width: 170px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Start Demo</button>
         </div>
     `;
@@ -713,10 +713,12 @@ function showReservationPopup() {
     document.getElementById('pop_overlay').style.display = 'block';
     document.getElementById('reservation_popUp').style.display = 'block';
 }
+
 function hideReservationPopUp() {
     document.getElementById('pop_overlay').style.display = 'none';
     document.getElementById('reservation_popUp').style.display = 'none';
 }
+
 
 
 function closeMarketingPopup() {
@@ -1102,27 +1104,27 @@ function closeModal() {
     // Check if the element exists
     if (reservationPopupElement !== null) {
         var formContent = `
-        <div class="hospitalityRewardPopUp">
+        <div style="background-color: #fff; max-width: 600px; height: auto; margin: auto; padding: 20px; position: relative; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); z-index: 2000;">
             <!-- Close button -->
-            <span onclick="hideReservationPopUp()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px; color: #555;">&times;</span>
+            <span onclick="hideReservationPopUp()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px; color: #555; z-index: 2001;">&times;</span>
 
             <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Reservation Form</h2>
             
             <div class="selector-container" style="margin-bottom: 16px;">
-            <select id="restaurantDropdown" style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 4px;">
-                <option value="restaurantA">Restaurant A</option>
-                <option value="restaurantB">Restaurant B</option>
-                <!-- ... -->
-            </select>
-        </div>
+                <select id="restaurantDropdown" style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 4px;">
+                    <option value="restaurantA">Restaurant A</option>
+                    <option value="restaurantB">Restaurant B</option>
+                    <!-- ... -->
+                </select>
+            </div>
 
-        <label style="display: block; margin-bottom: 8px;">Reservation Date:</label>
-        <input type="date" id="reservationDate" style="width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #aaa; border-radius: 4px;">
+            <label style="display: block; margin-bottom: 8px;">Reservation Date:</label>
+            <input type="date" id="reservationDate" style="width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #aaa; border-radius: 4px;">
 
-        <label style="display: block; margin-bottom: 8px;">Number of People:</label>
-        <input type="text" id="numOfPeople" style="width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #aaa; border-radius: 4px;">
+            <label style="display: block; margin-bottom: 8px;">Number of People:</label>
+            <input type="text" id="numOfPeople" style="width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #aaa; border-radius: 4px;">
 
-        <button onclick="submitReservation()" style="display: block; width: 200px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Submit Reservation</button>
+            <button onclick="submitReservation()" style="display: block; width: 200px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Submit Reservation</button>
         </div>
         `;
 
@@ -1131,6 +1133,7 @@ function closeModal() {
         console.error('Element with ID "reservation_popUp" not found.');
     }
 }
+
 
 function formatDateToMMDDYY(inputDate) {
     const date = new Date(inputDate);
