@@ -216,7 +216,11 @@
 										<!-- The content of the popup will be added dynamically via JS -->
 									</div>
 								</div>
-								
+								<!-- Dynamic Popup Container -->
+                                <div id="hospitality_location_popup" style="display:none; /* Other popup styles */">
+                                <!-- The content of the popup will be added dynamically via JS -->
+                                </div>
+
 								<div id="marketingPopup" class="popup" style="display: none; width: 500px; max-height: 80vh; overflow-y: auto; padding: 20px; border: 1px solid #aaa; background-color: #fff; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
 
 									<span class="close-btn" onclick="closeMarketingPopup()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
@@ -1472,6 +1476,40 @@ function saveToGoogleSheets(firstName, lastName, email, company, industry, hospi
             console.log('Error sending data to Zapier:', error);
         }
     });
+}
+function showHospitalityMessagePopup() {
+    const popup = document.getElementById('hospitality_location_popup');
+    popup.innerHTML = `
+        <div class="popup-content">
+            <p>Placeholder text for the first popup.</p>
+            <button onclick="showGoogleMapsWidget()">Start Demo</button>
+        </div>
+    `;
+    popup.style.display = 'block';
+}
+
+
+
+function showGoogleMapsWidget() {
+    const popup = document.getElementById('hospitality_location_popup');
+    popup.innerHTML = `
+        <!-- Insert your Google Maps Widget or its placeholder here -->
+        <div id="googleMapsWidget"></div>
+        <button onclick="locateMe()">Locate Me</button>
+        <textarea id="locationMessage" placeholder="Set a location message"></textarea>
+        <button onclick="updateLocationMessage()">Set</button>
+    `;
+    // Initialize your Google Maps widget here if needed.
+}
+
+function locateMe() {
+    // Your logic to locate the user using Google Maps goes here.
+}
+
+function updateLocationMessage() {
+    const message = document.getElementById('locationMessage').value;
+    // Assuming the function `updateWalletPass` has been previously defined and takes the message as its parameter.
+    updateWalletPass(message);
 }
 
 

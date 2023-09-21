@@ -2226,6 +2226,19 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
     align-items: center; /* These two will help center the popup content box in the middle of the screen */
     overflow-y: auto; /* In case your popup content is taller than the viewport height */
 }
+#hospitality_location_popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* This will create a semi-transparent dark background */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* These two will help center the popup content box in the middle of the screen */
+    overflow-y: auto; /* In case your popup content is taller than the viewport height */
+}
 
 .popup-content {
     background-color: #fff;
