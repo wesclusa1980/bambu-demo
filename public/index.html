@@ -142,12 +142,10 @@
 				<div class="text wow fadeInUp" data-wow-duration="1.5s">
 					<h3>Let's start here</h3>
 				</div>
-				<div class="button wow fadeInUp" data-wow-duration="1.5s">
-					<a href="#" id="get-digital-card" onclick="openModal();">Get your digital card</a>
-				</div>
-				
-				
-				
+				<div class="new-button">
+                    <a href="#" id="get-new-digital-card" onclick="openNewModal(event);">Get your digital card</a>
+                </div>
+                              
 			</div>
 		</div>
 	</div>
@@ -389,12 +387,11 @@
 
 
 <!-- MODAL CONTACT -->
-<div class="custom-modal" id="myModal">
-    <div class="custom-modal-content">
-        <div class="wrapper">
-            <span class="custom-close" onclick="closeModal()">&times;</span>
-            <div class="wizard">
-                <!-- Step 1: Tell us about yourself -->
+<div id="newModalId" style="background-color: rgba(0, 0, 0, 0.7); position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; display: none;">
+    <div style="background-color: #fff; max-width: 600px; height: auto; margin: auto; padding: 20px; position: relative; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); z-index: 1001;">
+        <span onclick="closeModal()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px; z-index: 1002;">&times;</span>
+        <div style="overflow-y: auto; max-height: 500px;">        
+        <!-- Step 1: Tell us about yourself -->
                 <div class="step" id="step1">
                     <div class="contact_title" style="margin-bottom: 20px;">
                         <h4 style="color: #000; font-weight: bold;">1. Tell us about yourself</h4>
@@ -433,31 +430,33 @@
                         </select>
                     </div>
                 </div>
-                
-				
-				
 				<!-- Wizard Controls -->
 				<div class="wizard-controls" style="margin-top: 20px;">
-					<a href="#" style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;" onclick="previousStep(); return false;">Previous</a>
-					<a href="#" class="next-btn" style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;" onclick="nextStep(); return false;">Next</a>
+					
+					<a href="#" class="next-btn" style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;" onclick="nextStep(); return false;" disabled>Next</a>
 					<a href="#" class="next-btn" style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s; display: none;" onclick="downloadCard();" id="downloadCardButton">Download card</a>
 					<a id="send_message" href="#" style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s; display: none;" onclick="initiateCreateCardProcess();" disabled style="display: block; text-align: center;">Create card</a>
-
 				</div>
+                <div id="pop_overlay" style="display:none;z-index:1002;">
+                    <div id="wait_animation" style="display:none;z-index:1003">
+                    <div class="loader"></div>
+                </div>
+                </div>
 				
 			
     </div>
 </div>
 
 <!-- END MODAL CONTACT -->
-
+<div id="customAlert" style="background-color: rgba(0, 0, 0, 0.7); position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2000; display: none;">
+    <div style="background-color: #fff; max-width: 400px; height: auto; margin: auto; padding: 20px; position: relative; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); z-index: 2001;">
+        <span onclick="hideCustomAlert()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px; z-index: 2002;">&times;</span>
+        <h4>All Fields Required</h4>
+        <p>All fields need to be entered.</p>
+    </div>
+</div>
 
 <style>
-    .popup_description_wrap {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
 
     /* Container */
 .modal-image {
@@ -476,9 +475,9 @@
 	top: 50%;
     position: absolute;   /* absolutely position the text within the container */
     bottom: 10px;         /* position the text 10px from the bottom of the container */
-    left: 45px;           /* position the text 10px from the left of the container */
+    left: 85px;           /* position the text 10px from the left of the container */
    
-    color: black;         /* white text */
+    color: white;         /* white text */
     padding: 5px 10px;    /* padding around the text */
     border-radius: 3px;
 	font-size: 10px;   /* optional, rounded corners for the overlay background */
@@ -704,6 +703,7 @@ function showReservationPopup() {
     const initialContent = `
         <div style="background-color: #fff; max-width: 600px; height: auto; margin: auto; padding: 20px; position: relative; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); z-index: 2000;">
             <span onclick="hideReservationPopUp()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px; z-index: 2001;">&times;</span>
+            <img src="img/hospitality_reservations.png" alt="Hospitality Reservations" style="max-width: 100%; width: auto; height: auto; display: block; margin: 20px auto;">
             <button onclick="reservationDemo()" style="display: block; width: 170px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Start Demo</button>
         </div>
     `;
@@ -714,11 +714,19 @@ function showReservationPopup() {
     document.getElementById('reservation_popUp').style.display = 'block';
 }
 
+
 function hideReservationPopUp() {
     document.getElementById('pop_overlay').style.display = 'none';
     document.getElementById('reservation_popUp').style.display = 'none';
 }
 
+function showCustomAlert() {
+    document.getElementById('customAlert').style.display = 'block';
+}
+
+function hideCustomAlert() {
+    document.getElementById('customAlert').style.display = 'none';
+}
 
 
 function closeMarketingPopup() {
@@ -807,10 +815,13 @@ function generateRandomNumber() {
 }
 
 function initiateCreateCardProcess() {
-    // First, fetch the token.
+    // Show the spinner and overlay
+    document.getElementById('pop_overlay').style.display = 'block';
+    document.getElementById('wait_animation').style.display = 'block';
+
     obtainToken(function(accessToken) {
         if (accessToken) {
-            // Now, retrieve form values.
+            // Retrieve form values
             const firstName = document.getElementById("first_name").value;
             const lastName = document.getElementById("last_name").value;
             const email = document.getElementById("email").value;
@@ -829,26 +840,22 @@ function initiateCreateCardProcess() {
                 case "cpg":
                     // assign the appropriate templateTierId for CPG
                     break;
-                case "insurance":
-                    // assign the appropriate templateTierId for Insurance
-                    break;
-                case "sport":
-                    // assign the appropriate templateTierId for Sports
-                    break;
                 // ... add more cases for other industries if needed
                 default:
                     console.error('Invalid industry selected.');
                     return;
             }
-			const hospitality_loyalty = generateRandomNumber();
-            // Store values in the session storage
+
+            const hospitality_loyalty = generateRandomNumber();
+            
+            // Store values in session storage
             sessionStorage.setItem("email", email);
             sessionStorage.setItem('first_name', firstName);
             sessionStorage.setItem('last_name', lastName);
             sessionStorage.setItem('company', company);
 
-            // Custom data with templateTierId
-			const customData = {
+            // Define customData
+            const customData = {
                 templateTierId: templateTierId,
                 passdata: {
                     metaData: {
@@ -868,13 +875,23 @@ function initiateCreateCardProcess() {
                 $('#send_message').hide();  // Hide the "Create card" button
             }
 
-            // Call makeIssueWalletApiCall with the necessary values, customData, and the onSuccess callback
+            // Call makeIssueWalletApiCall with necessary values, customData, and the onSuccess callback
             makeIssueWalletApiCall(accessToken, firstName, lastName, email, company, customData, handleSuccess);
+
             saveToGoogleSheets(firstName, lastName, email, company, industry, hospitality_loyalty);
+
+            // Hide the spinner and overlay
+            //document.getElementById('pop_overlay').style.display = 'none';
+            //document.getElementById('wait_animation').style.display = 'none';
         } else {
             console.log('Failed to fetch the access token.');
+            // Hide the spinner and overlay
+            //document.getElementById('pop_overlay').style.display = 'none';
+            //document.getElementById('wait_animation').style.display = 'none';
         }
     });
+    document.getElementById('pop_overlay').style.display = 'none';
+    document.getElementById('wait_animation').style.display = 'none';
 }
 
 
@@ -932,7 +949,7 @@ function updateImage(category) {
     switch(category) {
         case 'retail':
             imageUrl = "img/demo_card.png";
-            overlayText = "Tye your name on the form";
+            overlayText = "Type your name on the form";
             break;
         case 'cpg':
             imageUrl = "https://via.placeholder.com/150?text=Messaging";
@@ -959,21 +976,24 @@ function updateImage(category) {
     textElement.textContent = overlayText;
 }
 function checkFormAndSelector() {
-    let firstName = document.getElementById('first_name').value;
-    let lastName = document.getElementById('last_name').value;
-    let email = document.getElementById('email').value;
-    let imageSelected = document.getElementById('selectedImage').src;
-  
-    let defaultImage = "path_to_your_default_image"; // replace with your default image path
+  var firstName = document.getElementById('first_name').value;
+  var lastName = document.getElementById('last_name').value;
+  var email = document.getElementById('email').value;
+  var company = document.getElementById('company').value;
 
-    let button = document.getElementById('send_message');
+  var nextButton = document.querySelector('.next-btn');
 
-    if(firstName && lastName && email && imageSelected !== defaultImage) {
-        button.removeAttribute('disabled');
-    } else {
-        button.setAttribute('disabled', 'true');
-    }
+  if(firstName && lastName && email && company) {
+    nextButton.removeAttribute('disabled');
+    nextButton.style.backgroundColor = '#000';
+    nextButton.style.cursor = 'pointer';
+  } else {
+    nextButton.setAttribute('disabled', 'disabled');
+    nextButton.style.backgroundColor = 'grey';
+    nextButton.style.cursor = 'not-allowed';
+  }
 }
+
 function obtainToken(callback) {
     const authUrl = 'https://sandbox-auth.bambumeta.software/oauth2/token';
     const tokenData = {
@@ -1019,6 +1039,16 @@ function openModal() {
 }
 
 function nextStep() {
+    // Get the next button element
+    let nextBtn = document.querySelector(".wizard-controls .next-btn");
+
+    // If the next button is disabled, return early
+    if (nextBtn.hasAttribute("disabled")) {
+        console.log("Next button is disabled. Exiting function.");
+        showCustomAlert();
+        return;
+    }
+
     console.log("nextStep called. Current step:", currentStep);
 
     // Increment the step
@@ -1072,10 +1102,16 @@ function previousStep() {
         console.log("Cannot decrement step further.");
     }
 }
+function openNewModal(event) {
+    event.preventDefault();  // Prevent default behavior
+    // Your existing JavaScript code to open the new modal
+    document.getElementById('newModalId').style.display = 'block';
+}
+
 
 function closeModal() {
     // Close the myModal
-    var myModal = document.getElementById("myModal");
+    var myModal = document.getElementById("newModalI");
     if (myModal) { 
         myModal.style.display = "none";
     }
@@ -1220,7 +1256,7 @@ function hospitalityRewardDemo() {
         <div class="content">
 			<span class="close-btn" onclick="hideHospitalityRewardPopUp()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
             <img src="img/hospitality_rewards_slide.png" alt="Hospitality Rewards" style="max-width: 100%; width: auto; height: auto; display: block; margin: 20px auto;">
-            <p>Some description for the demo...</p>
+            
             <button onclick="startRewardContent()" style="display: block; width: 170px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Start Demo</button>
         </div>
 `;
@@ -1351,8 +1387,8 @@ function showHospitalityMessagePopup() {
         var formContent =  `
             <div style="background-color: #fff; max-width: 600px; height: 500px; margin: auto; padding: 20px; position: relative; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); overflow-y: auto;">
                 <span class="close-btn" onclick="hideHospitalityMessagePopUp" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
-                <img src="img/hospitality_rewards_slide.png" alt="Hospitality Rewards" style="max-width: 100%; width: auto; height: auto; display: block; margin: 20px auto;">
-                <p style="margin: 16px 0;">Some description for the demo...</p>
+                <img src="img/hospitality_messaging.png" alt="Hospitality Rewards" style="max-width: 100%; width: auto; height: auto; display: block; margin: 20px auto;">
+                
                 <button onclick="startMessagingContent()" style="display: block; width: 170px; margin: 20px auto; background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Start Demo</button>
             </div>
         `;
@@ -1521,6 +1557,23 @@ function updateLocationMessage() {
     const message = document.getElementById('locationMessage').value;
     // Assuming the function `updateWalletPass` has been previously defined and takes the message as its parameter.
     updateWalletPass(message);
+}
+function checkFormAndSelector() {
+    const firstName = document.getElementById('first_name').value;
+    const lastName = document.getElementById('last_name').value;
+    const email = document.getElementById('email').value;
+    const company = document.getElementById('company').value;
+    
+    const nextButton = document.querySelector('.next-btn'); // Adjust the querySelector as necessary
+
+    // Check if all fields are filled out
+    if (firstName && lastName && email && company) {
+        // Enable Next button
+        nextButton.removeAttribute('disabled');
+    } else {
+        // Disable Next button
+        nextButton.setAttribute('disabled', 'disabled');
+    }
 }
 
 

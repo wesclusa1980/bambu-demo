@@ -2270,6 +2270,60 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1000;
 }
+.loader {
+	border: 5px solid #f3f3f3; /* Light grey */
+	border-top: 5px solid #3498db; /* Blue */
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+  }
+  .new-button a {
+    text-decoration: none;
+    color: #000;
+    background-color: #fff;
+    display: inline-block;
+    padding: 13px 48px;
+    border: 2px solid #fff;
+    font-family: "Poppins";
+    
+    -webkit-transition: all .3s ease;
+       -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+         -o-transition: all .3s ease;
+            transition: all .3s ease;
+}
+
+.new-button a:hover {
+    color: #fff;
+    background-color: transparent;
+}
+.wizard-controls .next-btn:disabled {
+    background-color: grey !important;
+    cursor: not-allowed !important;
+}
+#pop_overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 1002;
+  }
+  
+  #wait_animation {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1003;
+  }
 
 
 
