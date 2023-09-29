@@ -390,64 +390,63 @@
 <div id="newModalId" style="background-color: rgba(0, 0, 0, 0.7); position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; display: none;">
     <div style="background-color: #fff; max-width: 600px; height: auto; margin: auto; padding: 20px; position: relative; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); z-index: 1001;">
         <span onclick="closeModal()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px; z-index: 1002;">&times;</span>
-        <div style="overflow-y: auto; max-height: 500px;">        
-        <!-- Step 1: Tell us about yourself -->
-                <div class="step" id="step1">
-                    <div class="contact_title" style="margin-bottom: 20px;">
-                        <h4 style="color: #000; font-weight: bold;">1. Tell us about yourself</h4>
-                    </div>
-                    <div class="fields">
-                        <form id="contact_form" autocomplete="off">
-                            <div class="returnmessage" data-success="Your message has been received, We will contact you soon."></div>
-                            <div class="first">
-                                <ul style="list-style-type: none; padding: 0;">
-                                    <li style="margin-bottom: 15px;"><input id="first_name" name="first_name" type="text" placeholder="First Name" onkeyup="updateOverlayText(this.value); checkFormAndSelector();"></li>
-                                    <li style="margin-bottom: 15px;"><input id="last_name" name="last_name" type="text" placeholder="Last Name" onkeyup="updateOverlayText(); checkFormAndSelector();"></li>
-                                    <li style="margin-bottom: 15px;"><input id="email" name="email" type="text" placeholder="Email" onkeyup="checkFormAndSelector();"></li>
-                                    <li><input id="company" name="company" type="text" placeholder="company"></li>
-                                </ul>
-                            </div>
-                        </form>
-                    </div>
+        <div style="overflow-y: auto; max-height: 500px;">
+            <!-- Step 1: Tell us about yourself -->
+            <div class="step" id="step1">
+                <div class="contact_title" style="margin-bottom: 20px;">
+                    <h4 style="color: #000; font-weight: bold;">1. Tell us about yourself</h4>
                 </div>
-                <!-- Step 2: Preview your card -->
-                <div class="step hidden" id="step2">
-                    <div class="contact_title" style="margin-bottom: 20px;">
-                        <h4 style="color: #000; font-weight: bold;">2. Choose your card</h4>
-                    </div>
-                    <div class="modal-image">
-                        <img src="img/base_card.png" alt="Descriptive alt text" id="selectedImage">
-                        <div class="new_overlay-text" id="overlayText"></div>
-                    </div>
-                    <div class="selector-container" style="margin-top: 20px;">
-                        <select id="cardSelector" onchange="updateImage(this.value);" style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 4px;">
-                            <option value="none">Choose your industry</option>
-                            <option value="retail">Retail</option>
-                            <option value="cpg">CPG</option>
-                            <option value="insurance">Insurance</option>
-                            <option value="sport">Sports</option>
-                            <option value="hospitality">Hospitality</option>
-                        </select>
-                    </div>
+                <div class="fields">
+                    <form id="contact_form" autocomplete="off">
+                        <div class="returnmessage" data-success="Your message has been received, We will contact you soon."></div>
+                        <div class="first">
+                            <ul style="list-style-type: none; padding: 0;">
+                                <li style="margin-bottom: 15px;"><input id="first_name" name="first_name" type="text" placeholder="First Name"></li>
+                                <li style="margin-bottom: 15px;"><input id="last_name" name="last_name" type="text" placeholder="Last Name"></li>
+                                <li style="margin-bottom: 15px;"><input id="email" name="email" type="text" placeholder="Email"></li>
+                                <li><input id="company" name="company" type="text" placeholder="company"></li>
+                            </ul>
+                        </div>
+                    </form>
                 </div>
-				<!-- Wizard Controls -->
-				<div class="wizard-controls" style="margin-top: 20px;">
-					
-					<a href="#" class="next-btn" style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;" onclick="nextStep(); return false;" disabled>Next</a>
-					<a href="#" class="next-btn" style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s; display: none;" onclick="downloadCard();" id="downloadCardButton">Download card</a>
-					<a id="send_message" href="#" style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s; display: none;" onclick="initiateCreateCardProcess();" disabled style="display: block; text-align: center;">Create card</a>
-				</div>
-                <div id="pop_overlay" style="display:none;z-index:1002;">
-                    <div id="wait_animation" style="display:none;z-index:1003">
+            </div>
+            <!-- Step 2: Preview your card -->
+            <div class="step hidden" id="step2">
+                <div class="contact_title" style="margin-bottom: 20px;">
+                    <h4 style="color: #000; font-weight: bold;">2. Choose your card</h4>
+                </div>
+                <div class="modal-image">
+                    <img src="img/base_card.png" alt="Descriptive alt text" id="selectedImage">
+                    <div class="new_overlay-text" id="overlayText"></div>
+                </div>
+                <div class="selector-container" style="margin-top: 20px;">
+                    <select id="cardSelector" onchange="updateImage(this.value);" style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 4px;">
+                        <option value="none">Choose your industry</option>
+                        <option value="retail">Retail</option>
+                        <option value="cpg">CPG</option>
+                        <option value="insurance">Insurance</option>
+                        <option value="sport">Sports</option>
+                        <option value="hospitality">Hospitality</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Wizard Controls -->
+            <div class="wizard-controls" style="margin-top: 20px;">
+                <a href="#" class="next-btn" style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;" onclick="nextStep(); return false;" disabled>Next</a>
+                <a href="#" class="next-btn" style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s; display: none;" onclick="downloadCard();" id="downloadCardButton">Download card</a>
+                <a id="send_message" href="#" style="background-color: #000; border: none; color: white; padding: 12px 24px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s; display: none;" onclick="initiateCreateCardProcess();" disabled style="display: block; text-align: center;">Create card</a>
+            </div>
+            <div id="pop_overlay" style="display:none;z-index:1002;">
+                <div id="wait_animation" style="display:none;z-index:1003">
                     <div class="loader"></div>
                 </div>
-                </div>
-				
-			
+            </div>
+        </div>
     </div>
 </div>
-
 <!-- END MODAL CONTACT -->
+
+
 <div id="customAlert" style="background-color: rgba(0, 0, 0, 0.7); position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2000; display: none;">
     <div style="background-color: #fff; max-width: 400px; height: auto; margin: auto; padding: 20px; position: relative; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); z-index: 2001;">
         <span onclick="hideCustomAlert()" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px; z-index: 2002;">&times;</span>
@@ -1042,13 +1041,6 @@ function nextStep() {
     // Get the next button element
     let nextBtn = document.querySelector(".wizard-controls .next-btn");
 
-    // If the next button is disabled, return early
-    if (nextBtn.hasAttribute("disabled")) {
-        console.log("Next button is disabled. Exiting function.");
-        showCustomAlert();
-        return;
-    }
-
     console.log("nextStep called. Current step:", currentStep);
 
     // Increment the step
@@ -1070,6 +1062,7 @@ function nextStep() {
         console.log("Cannot increment step further.");
     }
 }
+
 
 function showStep(step) {
     // Grab all steps
@@ -1111,7 +1104,7 @@ function openNewModal(event) {
 
 function closeModal() {
     // Close the myModal
-    var myModal = document.getElementById("newModalI");
+    var myModal = document.getElementById("newModalId");
     if (myModal) { 
         myModal.style.display = "none";
     }
